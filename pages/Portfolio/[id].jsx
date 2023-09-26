@@ -30,7 +30,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-	console.log(context);
 	const id = context.params.id;
 	connectDB();
 	const stock = await Stock.findById(id).lean();
@@ -51,6 +50,7 @@ export async function getStaticProps(context) {
 }
 
 const StockDetails = ({ pageProps }) => {
+	console.log(pageProps);
 	return (
 		<SideBar>
 			<Header />

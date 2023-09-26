@@ -13,10 +13,9 @@ async function createStock() {
 		console.error(`Error inserting data:`, error);
 
 		// res.status(500).json({ message: 'Internal Server Error' });
+	} finally {
+		mongoose.connection.close();
 	}
-	// finally {
-	// 	mongoose.connection.close();
-	// }
 }
 
 export default connectMongo;
