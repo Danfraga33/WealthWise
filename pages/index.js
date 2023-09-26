@@ -1,9 +1,5 @@
 import React from 'react';
 import Hero from '@/components/Hero';
-import Footer from '@/components/Footer';
-import Pricing from '@/components/Pricing';
-import Product from '@/components/Product';
-import Blog from '@/components/Blog';
 import Navbar from '@/components/Navbar';
 
 const index = () => {
