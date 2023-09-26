@@ -1,0 +1,15 @@
+import React, { Fragment } from 'react';
+
+const Header = () => {
+	return (
+		<Fragment>
+			<div className="flex justify-between px-4 pt-4">
+				<h2>Macro-Dashboard</h2>
+				<h2>Welcome Back, Daniel</h2>
+				<Avatar alt={session.user.name} src={session.user.image} />
+			</div>
+		</Fragment>
+	);
+};
+
+export default Header;

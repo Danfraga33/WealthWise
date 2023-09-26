@@ -1,0 +1,17 @@
+import LoginModal from '../LoginModal';
+import { useSession, signIn, signOut } from 'next-auth/react';
+
+const Login = () => {
+	const sessionData = useSession();
+	const session = sessionData.data;
+
+	return (
+		<>
+			<LoginModal />
+			{/* Not signed in <br />
+			<button onClick={() => signIn()}>Sign in</button> */}
+		</>
+	);
+};
+
+export default Login;

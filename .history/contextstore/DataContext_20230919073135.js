@@ -1,0 +1,27 @@
+import { createContext, useState } from 'react';
+
+const CompoundContext = createContext({
+	initialAmount,
+	targetAmount,
+	annualGrowthRate,
+});
+
+export function CompoundContextProvider(props) {
+	const [initialAmount, setInitialAmount] = useState();
+	const [targetAmount, setTargetAmount] = useState();
+	const [annualGrowthRate, setAnnualGrowthRate] = useState();
+
+	const context = {
+		initialAmount,
+		targetAmount,
+		annualGrowthRate,
+	};
+
+	return (
+		<CompoundContext.Provider value={context}>
+			{props.children}
+		</CompoundContext.Provider>
+	);
+}
+
+export default CompoundContext;
