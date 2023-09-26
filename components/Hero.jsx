@@ -9,13 +9,13 @@ const Hero = () => {
 					'linear-gradient(90deg, rgba(131, 126, 226, 1) 24%, rgba(114, 114, 226, 1) 58%, rgba(0, 212, 255, 1) 100%)',
 			}}
 		>
-			<div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+			<div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
 				{/* <img
-					class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center"
+					className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center"
 					alt="hero"
 					src="climbingMountain.jpg"
 				/> */}
-				<div class="text-center lg:w-5/12 w-full">
+				<div className="text-center lg:w-5/12 w-full">
 					<h1 className="my-4 text-5xl font-bold leading-tight">
 						Turn your designs into production-ready frontend
 					</h1>
@@ -52,7 +52,7 @@ export default Hero;
 // 			<Head></Head>
 // 			<section className=" bg-black text-green-500 py-16 pb-20  ">
 // 				<div
-// 					class="bg-cover bg-center "
+// 					className="bg-cover bg-center "
 // 					style={{ backgroundImage: 'url("/black.jpg")' }}
 // 				>
 // 					<div

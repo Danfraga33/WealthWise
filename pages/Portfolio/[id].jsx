@@ -30,10 +30,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
+	console.log(context);
 	const id = context.params.id;
 	connectDB();
 	const stock = await Stock.findById(id).lean();
-	console.log(stock);
 
 	const props = {
 		stockName: stock.summary.name,
