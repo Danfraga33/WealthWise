@@ -54,7 +54,7 @@ const StockDetails = ({ pageProps }) => {
 	return (
 		<SideBar>
 			<Header />
-			<div className="p-2">
+			{/* <div className="p-2">
 				<div className="flex justify-center text-center pb-2 w-full">
 					<Grid container spacing={1} className=" text-center pb-2 w-1/2">
 						<Grid item md>
@@ -74,7 +74,7 @@ const StockDetails = ({ pageProps }) => {
 					</Grid>
 				</Grid>
 				<DetailPage data={pageProps} />
-			</div>
+			</div> */}
 		</SideBar>
 	);
 };
