@@ -17,18 +17,17 @@ const Hero = () => {
 				/> */}
 				<div className="text-center lg:w-5/12 w-full">
 					<h1 className="my-4 text-5xl font-bold leading-tight">
-						Turn your designs into production-ready frontend
+						Achieving non-ambiguous Finanical Freedom
 					</h1>
 					<p className="text-2xl mb-8">
-						Ship products 5-10x faster with your existing design tools, tech
-						stacks & workflows!
+						Tracking your networth to financial Freedom
 					</p>
 					<div className="flex justify-center mx-auto">
 						<button className="hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8">
-							View Projects
+							Education
 						</button>
 						<button className="ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8">
-							Plugins
+							Dashboard
 						</button>
 					</div>
 				</div>

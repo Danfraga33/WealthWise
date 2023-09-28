@@ -22,6 +22,23 @@ const Navbar = () => {
 									<button className="hover:text-white">Dashboard</button>
 								</Link>
 							</li>
+							<li>
+								{session ? (
+									<button
+										className="hover:text-blue-500"
+										onClick={() => signOut()}
+									>
+										Sign Out
+									</button>
+								) : (
+									<button
+										className="hover:text-blue-500"
+										onClick={() => signIn()}
+									>
+										Sign In
+									</button>
+								)}
+							</li>
 						</ul>
 						{/* 
 						<div className="text-lg">

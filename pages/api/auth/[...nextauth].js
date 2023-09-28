@@ -9,6 +9,11 @@ export const authOptions = {
 			clientSecret: process.env.GOOGLE_SECRET,
 		}),
 	],
+	callbacks: {
+		async signOut({ url, baseUrl }) {
+			return `/`;
+		},
+	},
 	secret: process.env.NEXTAUTH_SECRET,
 };
 export default NextAuth(authOptions);

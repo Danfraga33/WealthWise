@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { quizData } from '@/data/quiz';
 
-console.log(quizData);
+// console.log(quizData);
 
 // const quizData = [
 // 	{

@@ -10,6 +10,8 @@ import Login from '@/components/Login/Login';
 import { CompoundContext } from '@/contextstore/DataContext';
 import Stock from '@/models/stockModel';
 import connectDB from '@/components/db';
+import LoginModal from '@/components/LoginModal';
+// import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 const Dashboard = ({ pageProps }) => {
 	const { portfolioData } = pageProps;
@@ -42,7 +44,7 @@ const Dashboard = ({ pageProps }) => {
 					</div>
 				</SideBar>
 			) : (
-				<Login />
+				<LoginModal />
 			)}
 		</Fragment>
 	);
