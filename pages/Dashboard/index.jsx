@@ -51,7 +51,7 @@ const Dashboard = ({ pageProps }) => {
 };
 
 export async function getStaticProps() {
-	// connectDB();
+	connectDB();
 
 	const portfolioData = await Stock.find().lean();
 	//GETS DATA
