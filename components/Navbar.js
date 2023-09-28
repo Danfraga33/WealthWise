@@ -1,10 +1,22 @@
 import Link from 'next/link';
 import React from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
 	const sessionData = useSession();
 	const session = sessionData.data;
+	const router = useRouter();
+
+	async function handleSignIn() {
+		await signIn();
+	}
+
+	async function handleSignOut() {
+		sessionStorage.clear();
+		await signOut();
+		router.push('/');
+	}
 	return (
 		<div>
 			<nav className="bg-white p-4">
@@ -26,14 +38,14 @@ const Navbar = () => {
 								{session ? (
 									<button
 										className="hover:text-blue-500"
-										onClick={() => signOut()}
+										onClick={handleSignOut}
 									>
 										Sign Out
 									</button>
 								) : (
 									<button
 										className="hover:text-blue-500"
-										onClick={() => signIn()}
+										onClick={handleSignIn}
 									>
 										Sign In
 									</button>
