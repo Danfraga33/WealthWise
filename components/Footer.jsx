@@ -13,7 +13,7 @@ const Footer = () => {
 
 						<div className="flex flex-col mt-4 sm:flex-row sm:items-center sm:justify-center mb-5">
 							<button className="w-full px-5 py-2 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mx-2 sm:order-2 sm:w-auto hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80 p-5">
-								<Link href="/Dashboard">Get started</Link>
+								<Link href="/">Get started</Link>
 							</button>
 						</div>
 					</div>

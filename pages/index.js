@@ -16,7 +16,6 @@ const index = () => {
 
 export default index;
 
-// import Dashboard from './Dashboard/index.jsx';
 // import connectDB from '@/components/db.js';
 // import React, { useState } from 'react';
 // import Stock from '../models/stockModel.js';

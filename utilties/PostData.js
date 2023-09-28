@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
 async function PostData(stock) {
 	try {
@@ -11,10 +12,10 @@ async function PostData(stock) {
 		});
 
 		if (response.ok) {
+			const router = useRouter();
 			const data = await response.json();
 			router.push('/Portfolio');
 			return data;
-			// console.log(data);
 			// window.location.reload();
 			// setFormData(initialFormData);
 			// Task added successfully, you can redirect or perform other actions.

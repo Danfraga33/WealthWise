@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Modal, Box } from '@mui/material';
-import PostData from './PostData';
+import PostData from '../utilties/PostData';
 import { Toaster, toast } from 'sonner';
 import { allStocks } from '@/data/allStocks';
 

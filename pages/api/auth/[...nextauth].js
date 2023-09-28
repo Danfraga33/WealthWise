@@ -11,7 +11,7 @@ export const authOptions = {
 	],
 	callbacks: {
 		async signOut({ url, baseUrl }) {
-			return `/`;
+			return `${baseUrl}`;
 		},
 	},
 	secret: process.env.NEXTAUTH_SECRET,

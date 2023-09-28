@@ -14,8 +14,8 @@ const Navbar = () => {
 
 	async function handleSignOut() {
 		sessionStorage.clear();
-		await signOut();
-		router.push('/');
+		await signOut({ redirect: false, callbackUrl: '/' });
+		// router.push('/');
 	}
 	return (
 		<div>
@@ -25,7 +25,7 @@ const Navbar = () => {
 						<h1 className="text-black text-2xl font-bold">WealthWave</h1>
 						<ul className="flex space-x-4 text-lg ">
 							<li className="hover:text-blue-500 ">
-								<Link href="/Dashboard" className="hover:text-white">
+								<Link href="/" className="hover:text-white">
 									<button className="hover:text-white">Home</button>
 								</Link>
 							</li>

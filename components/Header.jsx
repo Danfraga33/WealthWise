@@ -16,8 +16,7 @@ const Header = () => {
 
 	async function handleSignOut() {
 		sessionStorage.clear();
-		await signOut();
-		router.push('/');
+		await signOut({ callbackUrl: '/' });
 	}
 
 	const handleClick = (event) => {
