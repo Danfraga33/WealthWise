@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { Decimal128, ObjectId } from 'mongoose';
 
 const stockSchema = new mongoose.Schema({
 	summary: {
@@ -14,8 +13,5 @@ const stockSchema = new mongoose.Schema({
 	performance: Number,
 	purchaseDate: String,
 });
-
-// export default stockSchema;
-// console.log(mongoose.models);
 
 export default mongoose.models?.Stock || mongoose.model('Stock', stockSchema);

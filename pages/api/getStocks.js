@@ -1,7 +1,7 @@
 import connectDB from '@/components/db';
 import Stock from '@/models/stockModel';
 
-connectDB();
+// connectDB();
 
 export default async function getHandler(req, res) {
 	if (req.method === 'GET') {
