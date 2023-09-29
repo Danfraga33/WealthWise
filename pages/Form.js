@@ -27,9 +27,10 @@ const Form = () => {
 
 	useEffect(() => {
 		//GETS ENTIRE STOCK MARKET DATA
+		console.log(process.env.NEXT_PUBLIC_POLY_API_KEY);
 		const fetchAlphaData = async () => {
-			const url = `https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/2023-09-12?adjusted=true&apiKey=${process.env.POLY_API_KEY}`;
-			// const url = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=IBM&apikey=demo`;
+			const url = `https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/2023-09-12?adjusted=true&apiKey=${process.env.NEXT_PUBLIC_POLY_API_KEY}`;
+
 			try {
 				const response = await fetch(url);
 				if (response.ok) {
@@ -49,13 +50,13 @@ const Form = () => {
 		fetchAlphaData();
 	}, []);
 
-	console.log(entireStockMarket);
+	// console.log(entireStockMarket);
 
 	let targetObject = null;
 	useEffect(() => {
 		if (entireStockMarket) {
 			const results = entireStockMarket.results;
-			console.log(results);
+			// console.log(results);
 			const chosenStock = (targetObject = results.find(
 				(item) => item.T === ticker
 			));
@@ -134,7 +135,7 @@ const Form = () => {
 			purchaseDate: new Date(enteredDOP).toISOString().split('T')[0],
 		};
 
-		console.log(typeof enteredDOP);
+		// console.log(typeof enteredDOP);
 		// console.log('stock:', stock);
 
 		//HTTP REQUESTS
