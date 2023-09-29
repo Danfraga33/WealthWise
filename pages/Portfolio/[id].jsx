@@ -33,7 +33,7 @@ export async function getStaticProps(context) {
 	connectDB();
 	const id = context.params.id;
 	const stock = await Stock.findById(id).lean();
-	console.log(stock);
+	// console.log(stock);
 
 	const props = {
 		stockName: stock.summary.name,
