@@ -166,8 +166,7 @@ export default Portfolio;
 
 //Get PortfolioData
 export async function getStaticProps() {
-	// connectDB();
-
+	connectDB();
 	const portfolioData = await Stock.find().lean();
 
 	return {

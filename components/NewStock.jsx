@@ -1,13 +1,11 @@
 import mongoose from 'mongoose';
 import Form from '@/components/OldForm';
 import Head from 'next/head';
+import connectDB from './db';
 
 async function createStock(enteredStockData) {
 	try {
-		await mongoose.connect(process.env.MONGODB_URI, {
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-		});
+		connectDB();
 		console.log('Connected Sucessefully');
 
 		// res.status(201).json({ message: 'Data inserted successfully' });

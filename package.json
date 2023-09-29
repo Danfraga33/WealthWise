@@ -21,6 +21,7 @@
 		"@types/mapbox-gl": "^2.7.15",
 		"@visx/mock-data": "^3.3.0",
 		"chart.js": "^4.4.0",
+		"dotenv": "^16.3.1",
 		"heroicons": "^2.0.18",
 		"latest-version": "^7.0.0",
 		"mapbox-gl": "^2.15.0",

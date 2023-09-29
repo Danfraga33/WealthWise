@@ -3,7 +3,7 @@ import Stock from '../../models/stockModel';
 import mongoose from 'mongoose';
 
 //Connect to DB
-// connectDB();
+connectDB();
 
 export default async function handler(req, res) {
 	if (req.method === 'POST') {
