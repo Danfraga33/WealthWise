@@ -56,7 +56,7 @@ const Form = (props) => {
 			performance: performance,
 		};
 
-		console.log(stock);
+		// console.log(stock);
 	}
 
 	const [open, setOpen] = React.useState(false);

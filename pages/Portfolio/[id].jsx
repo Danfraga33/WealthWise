@@ -13,7 +13,7 @@ import { Grid, Paper } from '@mui/material';
 
 //  Telling Next.js which specific paths, or routes, should be pre-rendered as static HTML pages during the build process.
 export async function getStaticPaths() {
-	// connectDB();
+	connectDB();
 
 	const stockIds = await Stock.find({}, { _id: 1 }).lean();
 
@@ -33,6 +33,7 @@ export async function getStaticProps(context) {
 	const id = context.params.id;
 	// connectDB();
 	const stock = await Stock.findById(id).lean();
+	console.log(stock);
 
 	const props = {
 		stockName: stock.summary.name,
@@ -50,11 +51,11 @@ export async function getStaticProps(context) {
 }
 
 const StockDetails = ({ pageProps }) => {
-	console.log(pageProps);
+	// console.log(pageProps);
 	return (
 		<SideBar>
 			<Header />
-			{/* <div className="p-2">
+			<div className="p-2">
 				<div className="flex justify-center text-center pb-2 w-full">
 					<Grid container spacing={1} className=" text-center pb-2 w-1/2">
 						<Grid item md>
@@ -74,7 +75,7 @@ const StockDetails = ({ pageProps }) => {
 					</Grid>
 				</Grid>
 				<DetailPage data={pageProps} />
-			</div> */}
+			</div>
 		</SideBar>
 	);
 };

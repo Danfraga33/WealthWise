@@ -343,7 +343,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				///////////////////////////////////////////////////////
 
 				const numberOfYearsToAdd = ageDifference;
-				console.log(contextCtx);
+				// console.log(contextCtx);
 				// Function to increase a date by one week (7 days)
 				function increaseDateByOneWeek(dateString) {
 					const date = new Date(dateString);

@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 	if (req.method === 'POST') {
 		try {
 			// const Stock = new mongoose.model('Stock', stockSchema);
-			console.log('Connected to MongoDB');
+			// console.log('Connected to MongoDB');
 			//Prepare Data
 			const {
 				summary: { ticker, name },
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
 				purchaseDate,
 			} = req.body;
 
-			console.log('REQUEST_DATA:', req.body);
+			// console.log('REQUEST_DATA:', req.body);
 
 			//Making Model of "Stock" schema
 
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
 				purchaseDate,
 			});
 
-			console.log('Final Data Inputted:', stock);
+			// console.log('Final Data Inputted:', stock);
 
 			await stock.save();
 			res.status(201).json(stock);

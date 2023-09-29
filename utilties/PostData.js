@@ -21,7 +21,7 @@ async function PostData(stock) {
 			// Task added successfully, you can redirect or perform other actions.
 		} else {
 			// Handle the response when there's an error.
-			console.log('Failure');
+			// console.log('Failure');
 		}
 	} catch (error) {
 		console.error('Error adding stock:', error);
