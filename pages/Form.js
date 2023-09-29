@@ -28,7 +28,7 @@ const Form = () => {
 	useEffect(() => {
 		//GETS ENTIRE STOCK MARKET DATA
 		const fetchAlphaData = async () => {
-			const url = `https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/2023-09-12?adjusted=true&apiKey=WsJDp42rPMioim4r9xtNIK3GLoRpi1z5`;
+			const url = `https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/2023-09-12?adjusted=true&apiKey=${process.env.NEXT_PUBLIC_POLY_API_KEY}`;
 			// const url = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=IBM&apikey=demo`;
 			try {
 				const response = await fetch(url);

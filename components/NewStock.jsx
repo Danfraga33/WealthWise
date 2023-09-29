@@ -5,7 +5,7 @@ import connectDB from './db';
 
 async function createStock(enteredStockData) {
 	try {
-		connectDB();
+		// connectDB();
 		console.log('Connected Sucessefully');
 
 		// res.status(201).json({ message: 'Data inserted successfully' });
