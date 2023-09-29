@@ -1,4 +1,7 @@
+import connectDB from '@/components/db';
 import mongoose from 'mongoose';
+
+connectDB();
 
 const stockSchema = new mongoose.Schema({
 	summary: {
