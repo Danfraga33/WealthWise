@@ -8,8 +8,13 @@ const Login = () => {
 	const router = useRouter();
 
 	async function handleSignout() {
-		await signOut();
-		router.push('/');
+		sessionStorage.clear();
+		await signOut({ callbackUrl: '/' });
+	}
+
+	async function handleSignIn(e) {
+		e.preventDefault();
+		await signIn();
 	}
 
 	if (session) {
@@ -23,7 +28,7 @@ const Login = () => {
 		<>
 			{/* <LoginModal /> */}
 			Not signed in <br />
-			<button onClick={() => signIn()}>Sign in</button>
+			<button onClick={handleSignIn}>Sign in</button>
 		</>
 	);
 };

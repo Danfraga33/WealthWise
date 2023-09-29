@@ -6,6 +6,8 @@ import connectDB from '../../components/db';
 import DetailPage from '@/components/DetailPage';
 import { Grid, Paper } from '@mui/material';
 
+connectDB();
+
 ///////////// Tells which stock should be rendered
 // 1. Create a Link in the Parent Page
 // 2. Define Dynamic Route in Next.js
@@ -31,7 +33,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
 	const id = context.params.id;
-	// connectDB();
+	connectDB();
 	const stock = await Stock.findById(id).lean();
 	console.log(stock);
 

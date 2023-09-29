@@ -4,6 +4,16 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 const LoginModal = () => {
 	const sessionData = useSession();
 	const session = sessionData.data;
+
+	async function handleSignout() {
+		sessionStorage.clear();
+		await signOut({ callbackUrl: '/' });
+	}
+
+	async function handleSignIn(e) {
+		e.preventDefault();
+		await signIn();
+	}
 	return (
 		<>
 			<div className="flex items-center justify-center min-h-screen bg-rose-50">
@@ -63,7 +73,7 @@ const LoginModal = () => {
 							</button>
 							*/}
 							<button
-								onClick={() => signIn()}
+								onClick={handleSignIn}
 								className="flex items-center justify-center py-2 space-x-3 border border-gray-300 rounded shadow-sm hover:bg-opacity-30 hover:shadow-lg hover:-translate-y-0.5 transition duration-150 md:w-full"
 							>
 								<img src="/loginImages/google.png" alt="" className="w-9" />

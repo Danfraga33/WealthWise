@@ -8,7 +8,8 @@ const Navbar = () => {
 	const session = sessionData.data;
 	const router = useRouter();
 
-	async function handleSignIn() {
+	async function handleSignIn(e) {
+		e.preventDefault();
 		await signIn();
 	}
 

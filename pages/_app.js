@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
 
 	return (
 		<CompoundContextProvider>
-			<SessionProvider session={pageProps.session}>
+			<SessionProvider session={session}>
 				<main className={inter.className}>
 					<Component pageProps={pageProps} />
 				</main>
