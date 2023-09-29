@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 export default async function connectDB() {
 	try {
 		await mongoose.connect(
-			process.env.NEXT_PUBLIC_MONGODB_URI,
-			// 'mongodb+srv://danfraga:macro123@cluster0.ja2qgj7.mongodb.net/stocks?retryWrites=true&w=majority',
+			// process.env.NEXT_PUBLIC_MONGODB_URI,
+			'mongodb+srv://danfraga:macro123@cluster0.ja2qgj7.mongodb.net/stocks?retryWrites=true&w=majority',
 			{
 				useNewUrlParser: true,
 				useUnifiedTopology: true,

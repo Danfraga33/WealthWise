@@ -52,7 +52,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 	// console.log(position);
 	// Time Series Data (DATA)
 	async function getTimeSeriesData(ticker) {
-		// const API = process.env.NEXT_PUBLIC_VANTAGE_API;
+		// const API = process.env.;
 		// const url = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${ticker}&apikey=${API}`;
 		const url = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${ticker}&apikey=demo`;
 

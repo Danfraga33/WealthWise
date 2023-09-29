@@ -3,10 +3,10 @@ import Stock from '../../models/stockModel';
 import mongoose from 'mongoose';
 
 //Connect to DB
-// connectDB();
 
 export default async function handler(req, res) {
 	if (req.method === 'POST') {
+		connectDB();
 		try {
 			// const Stock = new mongoose.model('Stock', stockSchema);
 			// console.log('Connected to MongoDB');

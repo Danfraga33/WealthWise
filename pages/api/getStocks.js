@@ -4,7 +4,7 @@ import Stock from '@/models/stockModel';
 export default async function getHandler(req, res) {
 	if (req.method === 'GET') {
 		try {
-			// connectDB();
+			connectDB();
 			console.log('Connected to MongoDB');
 
 			// Finding Data in Stock model/collection
