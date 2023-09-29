@@ -175,12 +175,7 @@ const settings = () => {
 								</ul>
 							</div>
 						</div>
-						<div className="overflow-hidden relative">
-							<img
-								src="/climbingMountain.jpg"
-								className="object-cover opacity-50 absolute inset-0 bg-white shadow-inner"
-							/>
-						</div>
+						<div className="overflow-hidden relative"></div>
 					</div>
 				</div>
 			</div>
