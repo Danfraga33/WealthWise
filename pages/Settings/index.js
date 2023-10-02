@@ -62,39 +62,44 @@ const settings = () => {
 				<div className="p-4">
 					<div className=" grid grid-cols-2 w-full border p-4 rounded-lg bg-white overflow-y-auto ">
 						<div className="items-center p-5">
-							<div>
+							<div className="w-full">
 								<h1 className="text-start">Trendline Editor</h1>
-								<p>Update your trendline on your chart here:</p>
+								<p className="hidden md:block">
+									Update your trendline on your chart here:
+								</p>
 								<br />
 								<div className="w-full">
 									<div className="flex items-center w-full mb-2">
 										<label htmlFor="initial" className="flex mr-2">
 											Initial Amount:
 										</label>
-
-										<span>$</span>
-										<input
-											id="initial"
-											type="number"
-											placeholder="Starting Amount"
-											className=" border p-1 outline-none rounded-md className=w-full"
-											ref={initialAmountRef}
-											defaultValue="20000"
-										/>
+										<div className="flex items-center w-full max-w-md">
+											<span>$</span>
+											<input
+												id="initial"
+												type="number"
+												placeholder="Starting Amount"
+												className=" max-w-md border p-1 outline-none rounded-md"
+												ref={initialAmountRef}
+												defaultValue="20000"
+											/>
+										</div>
 									</div>
 								</div>
 
 								<div className="mb-2">
 									<label htmlFor="targetAmount">Target Amount: </label>
-									<span>$</span>
-									<input
-										id="targetAmount"
-										type="number"
-										placeholder="Target Amount"
-										className=" border p-1 outline-none rounded-md"
-										ref={targetInputRef}
-										defaultValue="100000"
-									/>
+									<div className="flex items-center">
+										<span>$</span>
+										<input
+											id="targetAmount"
+											type="number"
+											placeholder="Target Amount"
+											className=" border p-1 outline-none rounded-md"
+											ref={targetInputRef}
+											defaultValue="100000"
+										/>
+									</div>
 									<Link href="/questionnaire">
 										<button className="px-2 py-1 bg-blue-500 hover:bg-blue-600 text-white italic font-semibold rounded-md shadow-md text-sm mt-1 ml-4">
 											Need Help ?
@@ -111,7 +116,7 @@ const settings = () => {
 											id="expectedReturn"
 											type="number"
 											placeholder="35"
-											className="text-center border p-1 outline-none rounded-md"
+											className="text-left md:text-center border p-1 outline-none rounded-md"
 											ref={currentAgeRef}
 											defaultValue="35"
 										/>
@@ -126,7 +131,7 @@ const settings = () => {
 											id="expectedReturn"
 											type="number"
 											placeholder="65"
-											className="text-center border p-1 outline-none rounded-md"
+											className="text-left md:text-center border p-1 outline-none rounded-md"
 											ref={financiallyFreeAgeRef}
 											defaultValue="65"
 										/>
@@ -145,17 +150,17 @@ const settings = () => {
 									<Toaster position="bottom-left" />
 								</div>
 							</div>
-							<div className="mt-10 flex gap-2">
-								<button className="flex justify-center items-center pt-1 pb-1 pr-2 border border-gray-700 rounded-lg hover:bg-white gap-2">
-									<VscFeedback className="ml-1" />
-									Give Feedback
+							<div className="mt-10 flex gap-2 flex-row ">
+								<button className="flex justify-center items-center md:pt-1 md:pb-1 md:pr-2 w-full p-4 pr-6 border border-gray-700 rounded-lg hover:bg-white gap-2">
+									<VscFeedback className="ml-1 hidden md:block" />
+									<p className="text-sm md:text-md">Give Feedback</p>
 								</button>
 								<button
-									className="flex justify-center items-center pt-1 pb-1 pr-2 border border-gray-700 rounded-lg hover:bg-white gap-2 "
+									className="flex justify-center items-center md:pt-1 md:pb-1 md:pr-2 w-full p-4 pr-6 border border-gray-700 rounded-lg hover:bg-white gap-2 "
 									onClick={() => signOut()}
 								>
-									<GoSignOut className="ml-1" />
-									Sign Out
+									<GoSignOut className="ml-1 hidden md:block" />
+									<p className="text-sm md:text-md">Sign Out</p>
 								</button>
 							</div>
 							<div className="mt-5">

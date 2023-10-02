@@ -77,10 +77,16 @@ const Header = () => {
 
 	return (
 		<header className="w-full  text-gray-700 bg-white shadow-sm body-font ">
-			<div className="container items-center p-3 mx-auto md:flex-row flex justify-between ml-1">
-				<a className="flex items-center  font-medium text-gray-900 title-font md:mb-0 ">
-					<Image height={22} width={22} src="/search.svg" alt="logo" />
-					<h1 className="flex justify-center items-center ml-1 text-xl ">
+			<div className="container items-center p-3 mx-auto md:flex-row flex justify-between ml-1  ">
+				<a className="flex items-center  font-medium text-gray-900 title-font md:mb-0  ">
+					<Image
+						height={22}
+						width={22}
+						src="/search.svg"
+						alt="logo"
+						className="hidden md:block"
+					/>
+					<h1 className="md:flex justify-center items-center ml-1 text-xl hidden">
 						WealthWave Navigator
 					</h1>
 				</a>

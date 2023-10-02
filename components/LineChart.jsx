@@ -415,7 +415,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 	}, [portfolioData]);
 
 	return (
-		<div className="w-full md:col-span-2 relative lg:h-[7-vh] h-[70vh] m-auto p-4 border rounded-lg bg-white shadow-lg ">
+		<div className="w-full md:col-span-2 relative lg:h-[7-vh] h-[70vh] m-auto p-4 border rounded-lg bg-white shadow-lg hidden md:block">
 			<h1 className="flex justify-center w-100">Weekly Networth Tracker</h1>
 			<Line
 				data={chartData}

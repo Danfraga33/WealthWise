@@ -57,25 +57,27 @@ const Portfolio = ({ pageProps }) => {
 								<Form />
 							</div>
 
-							<div className="my-3 p-2 grid md:grid-cols-8 grid-cols-3 items-center justify-between cursor-pointer">
-								<span>Status</span>
-								<span className="sm:text-left text-right">Ticker</span>
+							<div className="my-3 p-2 grid md:grid-cols-8 items-center justify-between cursor-pointer grid-cols-3">
+								<span className="hidden md:flex">Status</span>
+								<span className="text-left">Ticker</span>
 								{/* <span className="hidden md:grid">Name</span> */}
 								<span className="hidden md:grid ">Position Size</span>
 								<span className="hidden md:grid">Avg Purchase Price</span>
-								<span className="hidden md:grid">Value @ Purchase</span>
-								<span className="hidden md:grid">Last Price</span>
+								<span className="hidden md:grid ">Value @ Purchase</span>
+								<span className="grid">Last Price</span>
 								<span className="hidden md:grid">Market Value</span>
-								<span className=" md:grid">Performance Since Inception</span>
+								<span className="grid text-left">
+									Performance Since Inception
+								</span>
 							</div>
 							<ul>
 								{portoData.map((stock, id) => (
 									<Link href={`/Portfolio/${stock.id}`} key={stock.id}>
 										<li
 											key={id}
-											className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-8 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer"
+											className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-8 grid-cols-3 items-center justify-between cursor-pointer"
 										>
-											<div className="flex">
+											<div className="md:flex hidden">
 												<div className="bg-green-200 p-2 rounded-lg">
 													<TiTickOutline />
 												</div>
@@ -83,27 +85,27 @@ const Portfolio = ({ pageProps }) => {
 													<p className="text-gray-800 font-bold"></p>
 												</div>
 											</div>
-											<div className="flex">
+											<div className="flex text-sm md:text-md">
 												{stock.ticker} {/* </div> */}
 											</div>
 
-											<p className="hidden md:flex">
+											<p className="hidden md:flex text-sm md:text-md">
 												{stock.positionSize.toFixed(2)}
 											</p>
-											<p className="hidden md:flex">
+											<p className="hidden md:flex text-sm md:text-md">
 												{stock.avgPurchasePrice.toFixed(2)}
 											</p>
-											<p className="hidden md:flex">
+											<p className="hidden md:flex text-sm md:text-md">
 												{stock.valueAtPurchase.toFixed(2)}
 											</p>
-											<p className="hidden md:flex">
+											<p className="flex text-sm md:text-md">
 												{stock.lastPrice.toFixed(2)}
 											</p>
-											<p className="hidden md:flex">
+											<p className="hidden md:flex text-sm md:text-md">
 												{stock.marketValue.toFixed(2)}
 											</p>
 
-											<div className="sm:flex hidden justify-between items-center">
+											<div className="flex md:justify-between  items-center text-sm md:text-md">
 												<p>{stock.performance.toFixed(2) + '%'}</p>
 
 												<Menu
