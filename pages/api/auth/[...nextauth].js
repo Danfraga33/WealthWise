@@ -10,6 +10,11 @@ export const authOptions = {
 		}),
 	],
 	callbacks: {
+		async signIn(user, account, profile) {
+			console.log('User Data:', profile);
+
+			return true;
+		},
 		async signOut({ url, baseUrl }) {
 			return `${baseUrl}`;
 		},

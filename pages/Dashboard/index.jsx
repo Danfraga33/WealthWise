@@ -56,7 +56,7 @@ export async function getStaticProps() {
 
 	const portfolioData = await Stock.find().lean();
 	//GETS DATA
-	console.log(portfolioData);
+	// console.log(portfolioData);
 	//CORRECT DATA!
 	return {
 		props: {
