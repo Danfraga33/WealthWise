@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { TiTickOutline } from 'react-icons/ti';
 import SideBar from '@/components/SideBar.jsx';
@@ -8,7 +8,6 @@ import Link from 'next/link.js';
 import connectDB from '@/components/db.js';
 import Stock from '@/models/stockModel';
 import Header from '@/components/Header.jsx';
-import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');

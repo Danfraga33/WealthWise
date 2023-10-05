@@ -1,19 +1,15 @@
 import React from 'react';
-import { useSession, signIn, signOut } from 'next-auth/react';
 
 const LoginModal = () => {
-	const sessionData = useSession();
-	const session = sessionData.data;
+	// async function handleSignout() {
+	// 	sessionStorage.clear();
+	// 	await signOut({ callbackUrl: '/' });
+	// }
 
-	async function handleSignout() {
-		sessionStorage.clear();
-		await signOut({ callbackUrl: '/' });
-	}
-
-	async function handleSignIn(e) {
-		e.preventDefault();
-		await signIn();
-	}
+	// async function handleSignIn(e) {
+	// 	e.preventDefault();
+	// 	await signIn();
+	// }
 	return (
 		<>
 			<div className="flex items-center justify-center min-h-screen bg-rose-50">

@@ -4,20 +4,17 @@ import Header from '@/components/Header.jsx';
 import TopCards from '@/components/TopCards.jsx';
 import LineChart from '@/components/LineChart.jsx';
 import Holdings from '@/components/Holdings.jsx';
-import { useSession } from 'next-auth/react';
 import SideBar from '@/components/SideBar';
-import Login from '@/components/Login/Login';
 import { CompoundContext } from '@/contextstore/DataContext';
 import Stock from '@/models/stockModel';
 import connectDB from '@/components/db';
-import LoginModal from '@/components/LoginModal';
-// import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import stockModel from '@/models/stockModel';
 
-const Dashboard = ({ pageProps }) => {
+const Dashboard = withPageAuthRequired(({ pageProps }) => {
+	const { user } = useUser();
 	const { portfolioData } = pageProps;
-	// console.log(pageProps);
-	const sessionData = useSession();
-	const session = sessionData.data;
 
 	const contextCtx = useContext(CompoundContext);
 
@@ -31,33 +28,28 @@ const Dashboard = ({ pageProps }) => {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			{session ? (
-				<SideBar portfolioData={portfolioData}>
-					<Header />
-					<div className="px-4 pt-4">
-						<h2 className="text-3xl">Performance</h2>
-					</div>
-					<TopCards portfolioData={portfolioData} />
-					<div className="p-4 grid md:grid-cols-3 grid-cols-1 gap-4">
-						<LineChart portfolioData={portfolioData} contextCtx={contextCtx} />
-						<Holdings portfolioData={portfolioData} />
-					</div>
-				</SideBar>
-			) : (
-				<LoginModal />
-			)}
+
+			<SideBar portfolioData={portfolioData}>
+				<Header />
+				<div className="px-4 pt-4">
+					<h2 className="text-3xl">Performance</h2>
+				</div>
+				<TopCards portfolioData={portfolioData} />
+				<div className="p-4 grid md:grid-cols-3 grid-cols-1 gap-4">
+					<LineChart portfolioData={portfolioData} contextCtx={contextCtx} />
+					<Holdings portfolioData={portfolioData} />
+				</div>
+			</SideBar>
 		</Fragment>
 	);
-};
+});
 
 ////////// ENTRY POINT
-export async function getStaticProps() {
+export const getStaticProps = async () => {
 	connectDB();
 
 	const portfolioData = await Stock.find().lean();
-	//GETS DATA
-	// console.log(portfolioData);
-	//CORRECT DATA!
+
 	return {
 		props: {
 			portfolioData: portfolioData.map((stock) => ({
@@ -74,6 +66,6 @@ export async function getStaticProps() {
 		},
 		revalidate: 60,
 	};
-}
+};
 
 export default Dashboard;

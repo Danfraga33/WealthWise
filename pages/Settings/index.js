@@ -7,8 +7,6 @@ import {
 	AiFillYoutube,
 	AiFillGoogleCircle,
 } from 'react-icons/ai';
-
-import { useSession, signIn, signOut } from 'next-auth/react';
 import { GoSignOut } from 'react-icons/go';
 import { VscFeedback } from 'react-icons/vsc';
 import { data } from '@/data/data';

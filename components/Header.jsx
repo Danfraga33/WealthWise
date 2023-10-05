@@ -1,6 +1,5 @@
 import { Fragment, useState } from 'react';
 import { Avatar } from '@mui/material';
-import { useSession, signIn, signOut } from 'next-auth/react';
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
@@ -8,17 +7,14 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 const Header = () => {
-	const sessionData = useSession();
-	const session = sessionData.data;
-	const { user } = session;
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const router = useRouter();
 
-	async function handleSignOut() {
-		sessionStorage.clear();
-		await signOut({ callbackUrl: '/' });
-	}
+	// async function handleSignOut() {
+	// 	sessionStorage.clear();
+	// 	await signOut({ callbackUrl: '/' });
+	// }
 
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
@@ -75,8 +71,6 @@ const Header = () => {
 		},
 	}));
 
-	console.log(user.email);
-
 	return (
 		<header className="w-full  text-gray-700 bg-white shadow-sm body-font ">
 			<div className="container items-center p-3 mx-auto md:flex-row flex justify-between ml-1  ">
@@ -104,10 +98,10 @@ const Header = () => {
 					</a>
 				</nav> */}
 				<div className="flex justify-center items-center gap-2">
-					<h2>Welcome Back, {session?.user?.name}</h2>
+					{/* <h2>Welcome Back, {session?.user?.name}</h2> */}
 
 					<button onClick={toggleDropdown} type="button">
-						<Avatar alt={session?.user?.name} src={session?.user?.image} />
+						{/* <Avatar alt={session?.user?.name} src={session?.user?.image} /> */}
 					</button>
 
 					{isOpen && (

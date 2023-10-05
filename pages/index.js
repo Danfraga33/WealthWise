@@ -1,11 +1,13 @@
 import React from 'react';
 import Hero from '@/components/Hero';
-import Navbar from '@/components/Navbar';
+// import Navbar from '@/components/Navbar';
+import NavbarCopy from '@/components/NavbarCopy';
 
 const index = () => {
 	return (
 		<div>
-			<Navbar />
+			{/* <Navbar /> */}
+			<NavbarCopy />
 			<div>
 				<Hero />
 			</div>

@@ -1,6 +1,4 @@
 import React from 'react';
-import { data } from '/data/data';
-import { FaShoppingBag } from 'react-icons/fa';
 import { AiOutlineStock } from 'react-icons/ai';
 
 const Holdings = ({ portfolioData }) => {

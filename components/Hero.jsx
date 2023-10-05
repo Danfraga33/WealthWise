@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Hero = () => {
 	return (
@@ -22,7 +23,7 @@ const Hero = () => {
 							Education
 						</button>
 						<button className="ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full  py-4 px-8">
-							Dashboard
+							Dashboard<Link href="/api/auth/login">Login</Link>
 						</button>
 					</div>
 				</div>

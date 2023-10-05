@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
-import { SessionProvider } from 'next-auth/react';
 import CompoundContextProvider from '../contextstore/DataContext';
 import { Inter } from '@next/font/google';
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 const inter = Inter({
 	subsets: ['latin'],
@@ -12,12 +12,12 @@ export default function App({ Component, pageProps }) {
 	const { session, ...restPageProps } = pageProps;
 
 	return (
-		<CompoundContextProvider>
-			<SessionProvider session={session}>
+		<UserProvider>
+			<CompoundContextProvider>
 				<main className={inter.className}>
 					<Component pageProps={pageProps} />
 				</main>
-			</SessionProvider>
-		</CompoundContextProvider>
+			</CompoundContextProvider>
+		</UserProvider>
 	);
 }
