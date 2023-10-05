@@ -2,6 +2,9 @@ import React from 'react';
 import { AiOutlineStock } from 'react-icons/ai';
 
 const Holdings = ({ portfolioData }) => {
+	if (!portfolioData) {
+		return <div>Loading...</div>;
+	}
 	return (
 		<div className="w-full col-span-1 relative p-4 border rounded-lg bg-white overflow-scroll ">
 			<h1>Current Holdings</h1>

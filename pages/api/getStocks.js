@@ -6,10 +6,7 @@ export default async function getHandler(req, res) {
 		try {
 			connectDB();
 			console.log('Connected to MongoDB');
-
-			// Finding Data in Stock model/collection
 			const stocks = await Stock.find();
-
 			res.status(200).json(stocks);
 		} catch (error) {
 			res

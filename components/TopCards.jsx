@@ -1,7 +1,11 @@
 import React, { Fragment } from 'react';
 
 const TopCards = ({ portfolioData }) => {
-	// console.log(portfolioData);
+	console.log(portfolioData);
+
+	if (!portfolioData) {
+		return <div>Loading...</div>;
+	}
 
 	function totalValue() {
 		return portfolioData.reduce((sum, stock) => sum + stock.marketValue, 0);

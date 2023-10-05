@@ -12,7 +12,10 @@ export default async function handler(req, res) {
 			// console.log('Connected to MongoDB');
 			//Prepare Data
 			const {
-				summary: { ticker, name },
+				name,
+				email,
+				id,
+				summary: { ticker, stockName },
 				positionSize,
 				avgPurchasePrice,
 				valueAtPurchase,
@@ -21,15 +24,17 @@ export default async function handler(req, res) {
 				performance,
 				purchaseDate,
 			} = req.body;
+			// console.log(stockName);
 
-			// console.log('REQUEST_DATA:', req.body);
+			console.log('REQUEST_DATA:', req.body);
 
-			//Making Model of "Stock" schema
-
-			const stock = new Stock({
+			const update = new Stock({
+				name,
+				email,
+				id,
 				summary: {
 					ticker,
-					name,
+					stockName,
 				},
 				positionSize,
 				avgPurchasePrice,
@@ -39,11 +44,16 @@ export default async function handler(req, res) {
 				performance,
 				purchaseDate,
 			});
+			const filter = { id: id };
+			const options = { upsert: true };
 
-			// console.log('Final Data Inputted:', stock);
+			console.log('Final Data Inputted:', update);
 
-			await stock.save();
-			res.status(201).json(stock);
+			const result = await Stock.findOneAndUpdate(filter, update, options, {
+				new: true,
+				useFindAndModify: false,
+			});
+			res.status(201).json(result);
 		} catch (error) {
 			res
 				.status(500)

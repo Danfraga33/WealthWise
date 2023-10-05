@@ -2,193 +2,50 @@ import React from 'react';
 
 const Pricing = () => {
 	return (
-		<section className="bg-gray-100 py-16">
-			<div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-				<h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl text-center">
-					Choose the Right Plan for You
-				</h2>
-				<p className="mt-4 text-xl text-gray-500 text-center">
-					Get started with our pricing plans. You can cancel at any time.
+		<div className="flex justify-evenly items-center w-full px-4 py-2 bg-black ">
+			<div className="rounded-lg p-8 bg-slate-800 text-white ">
+				<p className="text-xl text-center">Income</p>
+				<p className="text-sm text-center">
+					Income serves as the vital fuel that powers the engine of financial
+					freedom, propelling us toward our destination of financial security
+					and independence.
 				</p>
-
-				<div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{/* Free Plan */}
-					<div className="bg-white p-6 rounded-lg shadow-lg">
-						<h3 className="text-2xl font-semibold text-gray-900">Free Plan</h3>
-						<p className="mt-4 text-4xl font-extrabold text-gray-900">
-							$0<span className="text-xl font-normal text-gray-500">/mo</span>
-						</p>
-						<ul className="mt-6 space-y-4">
-							<li className="flex items-start">
-								<svg
-									className="w-6 h-6 text-green-500"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth="2"
-										d="M5 13l4 4L19 7"
-									/>
-								</svg>
-								<span className="ml-3 text-gray-700">E-commerce Tracking</span>
-							</li>
-							{/* Add more features for the Free Plan */}
-						</ul>
-						<div className="mt-8">
-							<a
-								href="#"
-								className="block w-full py-2 text-center font-semibold text-white bg-gray-500 hover:bg-gray-600 rounded-lg transition duration-300"
-							>
-								Get Started
-							</a>
-						</div>
-					</div>
-
-					{/* Basic Plan */}
-					<div className="bg-white p-6 rounded-lg shadow-lg">
-						<h3 className="text-2xl font-semibold text-gray-900">Basic Plan</h3>
-						<p className="mt-4 text-4xl font-extrabold text-gray-900">
-							$9<span className="text-xl font-normal text-gray-500">/mo</span>
-						</p>
-						<ul className="mt-6 space-y-4">
-							<li className="flex items-start">
-								<svg
-									className="w-6 h-6 text-green-500"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth="2"
-										d="M5 13l4 4L19 7"
-									/>
-								</svg>
-								<span className="ml-3 text-gray-700">
-									Unlimited E-commerce Tracking
-								</span>
-							</li>
-							<li className="flex items-start">
-								<svg
-									className="w-6 h-6 text-green-500"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth="2"
-										d="M5 13l4 4L19 7"
-									/>
-								</svg>
-								<span className="ml-3 text-gray-700">
-									Investment Portfolio Tracking
-								</span>
-							</li>
-							{/* Add more features for the Basic Plan */}
-						</ul>
-						<div className="mt-8">
-							<a
-								href="#"
-								className="block w-full py-2 text-center font-semibold text-white bg-green-500 hover:bg-green-600 rounded-lg transition duration-300"
-							>
-								Get Started
-							</a>
-						</div>
-					</div>
-
-					{/* Premium Plan */}
-					<div className="bg-white p-6 rounded-lg shadow-lg">
-						<h3 className="text-2xl font-semibold text-gray-900">
-							Premium Plan
-						</h3>
-						<p className="mt-4 text-4xl font-extrabold text-gray-900">
-							$19<span className="text-xl font-normal text-gray-500">/mo</span>
-						</p>
-						<ul className="mt-6 space-y-4">
-							<li className="flex items-start">
-								<svg
-									className="w-6 h-6 text-green-500"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth="2"
-										d="M5 13l4 4L19 7"
-									/>
-								</svg>
-								<span className="ml-3 text-gray-700">
-									Unlimited E-commerce Tracking
-								</span>
-							</li>
-							<li className="flex items-start">
-								<svg
-									className="w-6 h-6 text-green-500"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth="2"
-										d="M5 13l4 4L19 7"
-									/>
-								</svg>
-								<span className="ml-3 text-gray-700">
-									Investment Portfolio Tracking
-								</span>
-							</li>
-							<li className="flex items-start">
-								<svg
-									className="w-6 h-6 text-green-500"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									aria-hidden="true"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth="2"
-										d="M5 13l4 4L19 7"
-									/>
-								</svg>
-								<span className="ml-3 text-gray-700">Job Income Tracking</span>
-							</li>
-							{/* Add more features for the Premium Plan */}
-						</ul>
-						<div className="mt-8">
-							<a
-								href="#"
-								className="block w-full py-2 text-center font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-300"
-							>
-								Get Started
-							</a>
-						</div>
-					</div>
-				</div>
 			</div>
-		</section>
+			<div className="rounded-lg border p-8 mr-5 bg-slate-700 text-white ">
+				<p className="text-xl text-center">Investment</p>
+				<p className="text-sm text-center">
+					Investments serve as the turbocharger on the engine of financial
+					freedom, propelling your wealth forward with the momentum of growth
+					and opportunity
+				</p>
+			</div>
+			<div className="rounded-lg border border-black/80 p-8 mr-5 bg-slate-800 text-white ">
+				<p className="text-xl text-center">Income</p>
+				<p className="text-sm text-center">
+					Income serves as the vital fuel that powers the engine of financial
+					freedom, propelling us toward our destination of financial security
+					and independence.
+				</p>
+			</div>
+			//{' '}
+			{/* <div className="dropdown">
+		// 		<label tabIndex={0} className="btn m-1">
+		// 			Click
+		// 		</label>
+		// 		<ul
+		// 			tabIndex={0}
+		// 			className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+		// 		>
+		// 			<li>
+		// 				<a>Item 1</a>
+		// 			</li>
+		// 			<li>
+		// 				<a>Item 2</a>
+		// 			</li>
+		// 		</ul>
+		// 	</div> */}
+			//{' '}
+		</div>
 	);
 };
 

@@ -3,6 +3,7 @@ import { Modal, Box } from '@mui/material';
 import PostData from '../utilties/PostData';
 import { Toaster, toast } from 'sonner';
 import { allStocks } from '@/data/allStocks';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const style = {
 	position: 'absolute',
@@ -24,10 +25,14 @@ const Form = () => {
 	const [entireStockMarket, setEntireStockMarket] = useState(null);
 	const [ticker, setTicker] = useState('');
 	const [chosenStock, setChosenStock] = useState(null);
+	const { user } = useUser();
+
+	// console.log('USER FORM:', user);
 
 	useEffect(() => {
 		//GETS ENTIRE STOCK MARKET DATA
-		console.log(process.env.NEXT_PUBLIC_POLY_API_KEY);
+
+		// console.log(process.env.NEXT_PUBLIC_POLY_API_KEY);
 		const fetchAlphaData = async () => {
 			const url = `https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/2023-09-12?adjusted=true&apiKey=${process.env.NEXT_PUBLIC_POLY_API_KEY}`;
 
@@ -102,7 +107,7 @@ const Form = () => {
 	function handleCheckBoxChange(e) {
 		setCurrentPurchase(e.target.checked);
 	}
-
+	// console.log(user.sub);
 	//Making Form
 	async function submitHandler(event) {
 		event.preventDefault();
@@ -121,9 +126,12 @@ const Form = () => {
 
 		//Form
 		const stock = {
+			name: user.name.toString(),
+			email: user.email.toString(),
+			id: user.sub.toString(),
 			summary: {
 				ticker: enteredTicker,
-				name: enteredName,
+				stockName: enteredName,
 			},
 			positionSize: Number(enteredPositionSize),
 			avgPurchasePrice: Number(enteredavgPurchasePrice),
@@ -136,7 +144,7 @@ const Form = () => {
 		};
 
 		// console.log(typeof enteredDOP);
-		// console.log('stock:', stock);
+		console.log('stock:', stock);
 
 		//HTTP REQUESTS
 		const response = await PostData(stock);
@@ -210,7 +218,7 @@ const Form = () => {
 							)}
 						</div>
 						<div className="bg-gray-200 rounded-lg p-1 mb-1">
-							<label htmlFor="image">Name: </label>
+							<label htmlFor="image">Stock Name: </label>
 							<input
 								type="text"
 								required

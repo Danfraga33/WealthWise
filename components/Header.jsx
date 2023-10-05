@@ -5,16 +5,19 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import Link from 'next/link';
 
 const Header = () => {
+	const { user } = useUser();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const router = useRouter();
+	console.log(user);
 
-	// async function handleSignOut() {
-	// 	sessionStorage.clear();
-	// 	await signOut({ callbackUrl: '/' });
-	// }
+	async function handleSignOut() {
+		await signOut({ callbackUrl: '/' });
+	}
 
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
@@ -98,15 +101,15 @@ const Header = () => {
 					</a>
 				</nav> */}
 				<div className="flex justify-center items-center gap-2">
-					{/* <h2>Welcome Back, {session?.user?.name}</h2> */}
+					<h2>Welcome Back, {user?.nickname}</h2>
 
 					<button onClick={toggleDropdown} type="button">
-						{/* <Avatar alt={session?.user?.name} src={session?.user?.image} /> */}
+						<Avatar alt={user?.nickname} src={user?.picture} />
 					</button>
 
 					{isOpen && (
 						<div className="absolute mt-12 p-2 bg-white border border-gray-300 rounded shadow-lg top-3 right-4">
-							<button onClick={handleSignOut}>Sign Out</button>
+							<Link href="/api/auth/logout">Sign Out</Link>
 						</div>
 					)}
 				</div>

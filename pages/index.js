@@ -2,16 +2,14 @@ import React from 'react';
 import Hero from '@/components/Hero';
 // import Navbar from '@/components/Navbar';
 import NavbarCopy from '@/components/NavbarCopy';
+import Pricing from '@/components/Pricing';
 
 const index = () => {
 	return (
 		<div>
 			{/* <Navbar /> */}
 			<NavbarCopy />
-			<div>
-				<Hero />
-			</div>
-			<div className="pt-20">{/* <Product /> */}</div>
+			<Hero />
 		</div>
 	);
 };

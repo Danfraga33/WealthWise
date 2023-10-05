@@ -3,9 +3,12 @@ import mongoose from 'mongoose';
 
 // connectDB();
 const stockSchema = new mongoose.Schema({
+	name: String,
+	email: String,
+	id: String,
 	summary: {
 		ticker: String,
-		name: String,
+		stockName: String,
 	},
 	positionSize: Number,
 	avgPurchasePrice: Number,

@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useRef, useContext } from 'react';
 import Link from 'next/link';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 import { FaFacebook } from 'react-icons/fa';
 import {
@@ -44,9 +45,12 @@ const settings = () => {
 		setTargetAmount(newTargetAmount);
 		setAgeDifference(expectedTimeFrame);
 	}
+	const { user, error, isLoading } = useUser();
 
+	if (isLoading) return <div>Loading...</div>;
+	if (error) return <div>{error.message}</div>;
 	//////////////////////////////////////////////////////////////////
-
+	console.log(user);
 	return (
 		<SideBar>
 			<Head></Head>
@@ -61,7 +65,20 @@ const settings = () => {
 					<div className=" grid grid-cols-2 w-full border p-4 rounded-lg bg-white overflow-y-auto ">
 						<div className="items-center p-5">
 							<div className="w-full">
-								<h1 className="text-start">Trendline Editor</h1>
+								<div className="pb-2">
+									{user && (
+										<div className="border border-black/50 rounded-lg p-4 inline-block ">
+											<img
+												src={user.picture}
+												alt={user.name}
+												className="pb-2 rounded-lg"
+											/>
+											<h2>Name: {user.name}</h2>
+											<p>Email: {user.email}</p>
+										</div>
+									)}
+								</div>
+								<h1 className="text-start underline">Trendline Editor</h1>
 								<p className="hidden md:block">
 									Update your trendline on your chart here:
 								</p>
@@ -84,7 +101,6 @@ const settings = () => {
 										</div>
 									</div>
 								</div>
-
 								<div className="mb-2">
 									<label htmlFor="targetAmount">Target Amount: </label>
 									<div className="flex items-center">
@@ -104,7 +120,6 @@ const settings = () => {
 										</button>
 									</Link>
 								</div>
-
 								<div className="flex mb-2">
 									<label htmlFor="expectedReturn" className="mr-1">
 										Current Age:

@@ -129,4 +129,5 @@ module.exports = {
 		},
 	],
 	plugins: [require('@headlessui/tailwindcss')],
+	plugins: [require('daisyui')],
 };

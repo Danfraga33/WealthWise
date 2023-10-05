@@ -24,8 +24,8 @@ const chartdata = [
 	// ...
 ];
 
-const dataFormatter = (number) =>
-	`$${Intl.NumberFormat('us').format(number).toString()}`;
+// const dataFormatter = (number) =>
+// 	`$${Intl.NumberFormat('us').format(number).toString()}`;
 
 const LineChartComponent = () => (
 	<Card>

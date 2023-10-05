@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
+/* eslint-disable react/jsx-key */
 import { Line } from 'react-chartjs-2';
 import {
 	Chart as ChartJS,
@@ -26,6 +27,9 @@ ChartJS.register(
 );
 
 const LineChart = ({ portfolioData, contextCtx }) => {
+	if (!portfolioData) {
+		return <div>Loading...</div>;
+	}
 	const [timeSeriesData, setTimeSeriesData] = useState([]);
 	const [allTimeSeriesData, setAllTimeSeriesData] = useState([]);
 	const [userMarketValues, setUserMarketValues] = useState([]);
@@ -138,15 +142,13 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				const dates = Object.keys(weeklyClosePrices);
 				const startIndex = dates.indexOf(earliestDate);
 				const labelsbefore = dates.slice(startIndex);
-				// console.log(labelsbefore);
 
 				const todaysDate = new Date(); // Assuming you have your latestDate object
 
 				const year = todaysDate.getFullYear();
-				const month = String(todaysDate.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed, so we add 1
+				const month = String(todaysDate.getMonth() + 1).padStart(2, '0'); // Month is
 				const day = String(todaysDate.getDate()).padStart(2, '0');
-
-				const formattedDate = `${year}-${month}-${day}`; // You need to implement a function to find the latest date
+				const formattedDate = `${year}-${month}-${day}`; // You need to implement a function
 
 				function createArrayOfDates(startDate, endDate) {
 					const dateArray = [];
