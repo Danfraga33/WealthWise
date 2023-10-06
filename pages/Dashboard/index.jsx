@@ -42,8 +42,11 @@ const Dashboard = withPageAuthRequired(({ pageProps }) => {
 				</div>
 				<TopCards portfolioData={updatedPortfolioData} />
 				<div className="p-4 grid md:grid-cols-3 grid-cols-1 gap-4">
-					<LineChart portfolioData={portfolioData} contextCtx={contextCtx} />
-					<Holdings portfolioData={portfolioData} />
+					<LineChart
+						portfolioData={updatedPortfolioData}
+						contextCtx={contextCtx}
+					/>
+					<Holdings portfolioData={updatedPortfolioData} />
 				</div>
 			</SideBar>
 		</Fragment>

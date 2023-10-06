@@ -1,47 +1,33 @@
-import { Card, Title, LineChart } from '@tremor/react';
+// import React from 'react';
+// import {
+// 	BarChart,
+// 	Bar,
+// 	XAxis,
+// 	YAxis,
+// 	CartesianGrid,
+// 	Tooltip,
+// 	Legend,
+// } from '@mui/charts';
 
-const chartdata = [
-	{
-		year: 2008,
-		Networth: 231223,
-	},
-	{
-		year: 2012,
-		Networth: 836482,
-	},
-	{
-		year: 2016,
-		Networth: 1107325,
-	},
-	{
-		year: 2020,
-		Networth: 1923567,
-	},
-	{
-		year: 2024,
-		Networth: 2632230,
-	},
-	// ...
-];
+// const HeroChart = () => {
+// 	return (
+// 		<BarChart
+// 			xAxis={[
+// 				{
+// 					id: 'barCategories',
+// 					data: ['bar A', 'bar B', 'bar C'],
+// 					scaleType: 'band',
+// 				},
+// 			]}
+// 			series={[
+// 				{
+// 					data: [2, 5, 3],
+// 				},
+// 			]}
+// 			width={500}
+// 			height={300}
+// 		/>
+// 	);
+// };
 
-// const dataFormatter = (number) =>
-// 	`$${Intl.NumberFormat('us').format(number).toString()}`;
-
-const LineChartComponent = () => (
-	<Card>
-		<Title>Networth</Title>
-		<div>
-			<LineChart
-				className="mt-6 w-full"
-				data={chartdata}
-				index="year"
-				categories={['Networth']}
-				colors={['green', 'gray']}
-				valueFormatter={dataFormatter}
-				yAxisWidth={80}
-			/>
-		</div>
-	</Card>
-);
-
-export default LineChartComponent;
+// export default HeroChart;

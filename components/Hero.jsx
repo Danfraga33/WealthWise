@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import BlackWithLighFromTopRight from '../public/BlackWithLighFromTopRight.jpg';
 import Logo from './Logo';
 import Image from 'next/image';
+import HeroChart from './HeroChart';
 
 const Hero = () => {
 	return (
@@ -14,7 +14,8 @@ const Hero = () => {
 					className="absolute"
 					style={{ height: '100%', width: '100%' }}
 				/>
-				<div className="flex flex-col justify-center w-full items-center">
+				{/* <Logo /> */}
+				<div className="flex flex-col justify-center w-full items-center px-8">
 					<Image
 						src="/WealthWave.png"
 						height={250}
@@ -22,15 +23,19 @@ const Hero = () => {
 						alt="Logo"
 						className="z-10"
 					/>
-					<Logo />
-					<div className="relative z-10 text-white px-10 py-5 text-center max-w-screen-sm bg-slate-900/90 rounded-md backdrop-blur-sm">
+
+					{/* <HeroChart /> */}
+					{/* <HeroChart /> */}
+					<div className="relative z-10 text-white text-center max-w-screen-sm bg-slate-900/90 rounded-md backdrop-blur-sm">
 						<p>
-							Dreams without measurement are like stars without a sky – they
-							shine brightly but lack a meaningful place to guide us.
+							Measuring your net worth is not just a financial calculation; it's
+							a powerful compass on the journey to financial freedom.
 						</p>
-						<Link href="/Dashboard" className="underline pt-2 block">
-							Begin
-						</Link>
+						<div className="inline-block text-lg mt-2 items-center px-8 py-1 rounded-lg border">
+							<Link href="/Dashboard" className="underline pt-2 block">
+								Begin
+							</Link>
+						</div>
 					</div>
 				</div>
 			</div>
