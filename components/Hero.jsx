@@ -33,7 +33,7 @@ const Hero = () => {
 						</p>
 						<div className="inline-block text-lg mt-2 items-center px-8 py-1 rounded-lg border">
 							<Link href="/Dashboard" className="underline pt-2 block">
-								Begin
+								Dashboard
 							</Link>
 						</div>
 					</div>

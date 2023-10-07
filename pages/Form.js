@@ -126,21 +126,20 @@ const Form = () => {
 
 		//Form
 		const stock = {
-			name: user.name.toString(),
+			name: user.nickname.toString(),
 			email: user.email.toString(),
-			id: user.sub.toString(),
-			summary: {
+			userId: user.sub.toString(),
+			stockData: {
 				ticker: enteredTicker,
 				stockName: enteredName,
+				purchaseDate: new Date(enteredDOP).toISOString().split('T')[0],
+				positionSize: Number(enteredPositionSize),
+				avgPurchasePrice: Number(enteredavgPurchasePrice),
+				valueAtPurchase: Number(initialValue),
+				lastPrice: Number(enteredLastPrice),
+				marketValue: Number(marketValue),
+				performance: Number(performance),
 			},
-			positionSize: Number(enteredPositionSize),
-			avgPurchasePrice: Number(enteredavgPurchasePrice),
-			valueAtPurchase: Number(initialValue),
-			lastPrice: Number(enteredLastPrice),
-			marketValue: Number(marketValue),
-			currentPurchase: Number(currentPurchase),
-			performance: Number(performance),
-			purchaseDate: new Date(enteredDOP).toISOString().split('T')[0],
 		};
 
 		// console.log(typeof enteredDOP);
@@ -150,7 +149,7 @@ const Form = () => {
 		const response = await PostData(stock);
 		if (response) {
 			toast.message('Success', {
-				description: 'Stock has been added to Portfolio',
+				description: 'Stock has been added to Portfolio!',
 			});
 		}
 	}

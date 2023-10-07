@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import NavbarCopy from '@/components/NavbarCopy';
 
 const index = () => {
+	console.log(process);
 	return (
 		<div>
 			<NavbarCopy />

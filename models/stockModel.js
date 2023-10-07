@@ -5,18 +5,18 @@ import mongoose from 'mongoose';
 const stockSchema = new mongoose.Schema({
 	name: String,
 	email: String,
-	id: String,
-	summary: {
+	userId: String,
+	stockData: {
 		ticker: String,
 		stockName: String,
+		purchaseDate: String,
+		positionSize: Number,
+		avgPurchasePrice: Number,
+		valueAtPurchase: Number,
+		lastPrice: Number,
+		marketValue: Number,
+		performance: Number,
 	},
-	positionSize: Number,
-	avgPurchasePrice: Number,
-	valueAtPurchase: Number,
-	lastPrice: Number,
-	marketValue: Number,
-	performance: Number,
-	purchaseDate: String,
 });
 
 export default mongoose.models?.Stock || mongoose.model('Stock', stockSchema);

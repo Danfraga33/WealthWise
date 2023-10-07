@@ -106,50 +106,6 @@ const Portfolio = ({ pageProps }) => {
 
 											<div className="flex md:justify-between  items-center text-sm md:text-md">
 												<p>{stock.performance.toFixed(2) + '%'}</p>
-
-												<Menu
-													as="div"
-													className="relative inline-block text-left"
-												>
-													<div>
-														<Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 relative z-10">
-															<BsThreeDotsVertical
-																onClick={(e) => e.stopPropagation}
-															/>
-														</Menu.Button>
-													</div>
-
-													<Transition
-														as={Fragment}
-														enter="transition ease-out duration-100"
-														enterFrom="transform opacity-0 scale-95"
-														enterTo="transform opacity-100 scale-100"
-														leave="transition ease-in duration-75"
-														leaveFrom="transform opacity-100 scale-100"
-														leaveTo="transform opacity-0 scale-95"
-													>
-														<Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20">
-															<div className="py-1">
-																<Menu.Item>
-																	{({ active }) => (
-																		<a
-																			href="#"
-																			className={classNames(
-																				active
-																					? 'bg-gray-100 text-gray-900'
-																					: 'text-gray-700',
-																				'block px-4 py-2 text-sm'
-																			)}
-																			onClick={() => deleteStock(stock.id)}
-																		>
-																			Delete
-																		</a>
-																	)}
-																</Menu.Item>
-															</div>
-														</Menu.Items>
-													</Transition>
-												</Menu>
 											</div>
 										</li>
 									</Link>
@@ -173,16 +129,20 @@ export async function getStaticProps() {
 	return {
 		props: {
 			portfolioData: portfolioData.map((stock) => ({
-				ticker: stock.summary.ticker,
+				name: stock.name,
+				email: stock.email,
+				userId: stock.userId,
+				ticker: stock.stockData.ticker,
 				id: stock._id.toString(),
-				positionSize: stock.positionSize,
-				avgPurchasePrice: stock.avgPurchasePrice,
-				valueAtPurchase: stock.valueAtPurchase,
-				lastPrice: stock.lastPrice,
-				marketValue: stock.marketValue,
-				performance: stock.performance,
+				positionSize: stock.stockData.positionSize,
+				avgPurchasePrice: stock.stockData.avgPurchasePrice,
+				valueAtPurchase: stock.stockData.valueAtPurchase,
+				lastPrice: stock.stockData.lastPrice,
+				marketValue: stock.stockData.marketValue,
+				performance: stock.stockData.performance,
+				dateOfPurchase: stock.stockData.purchaseDate,
 			})),
 		},
-		revalidate: 60,
+		revalidate: false,
 	};
 }

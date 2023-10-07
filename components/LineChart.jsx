@@ -27,7 +27,7 @@ ChartJS.register(
 );
 
 const LineChart = ({ portfolioData, contextCtx }) => {
-	if (!portfolioData) {
+	if (!portfolioData || portfolioData.length === 0) {
 		return <div>Loading...</div>;
 	}
 	const [timeSeriesData, setTimeSeriesData] = useState([]);
@@ -46,14 +46,15 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 	portfolioData.map((stock) => {
 		tickers.push(stock.ticker);
 	});
+
 	const ticker = portfolioData[0].ticker; //ONLY SELECTING THE FIRST
+
 	const positions = [];
 	portfolioData.map((stock) => {
 		positions.push(stock.positionSize);
 	});
 
 	const position = portfolioData[0].positionSize;
-	// console.log(position);
 	// Time Series Data (DATA)
 	async function getTimeSeriesData(ticker) {
 		// const API = process.env.;

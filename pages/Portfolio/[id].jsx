@@ -33,16 +33,16 @@ export async function getStaticProps(context) {
 	connectDB();
 	const id = context.params.id;
 	const stock = await Stock.findById(id).lean();
-	// console.log(stock);
+	console.log(stock);
 
 	const props = {
-		stockName: stock.summary.name,
-		ticker: stock.summary.ticker,
-		lastPrice: stock.lastPrice,
-		performance: stock.performance,
-		avgPurchasePrice: stock.avgPurchasePrice,
-		valueAtPurchase: stock.valueAtPurchase,
-		positionSize: stock.positionSize,
+		stockName: stock.stockData.stockName,
+		ticker: stock.stockData.ticker,
+		lastPrice: stock.stockData.lastPrice,
+		performance: stock.stockData.performance,
+		avgPurchasePrice: stock.stockData.avgPurchasePrice,
+		valueAtPurchase: stock.stockData.valueAtPurchase,
+		positionSize: stock.stockData.positionSize,
 	};
 
 	return {

@@ -10,7 +10,6 @@ async function PostData(stock) {
 			},
 			body: JSON.stringify(stock),
 		});
-		console.log(body);
 
 		if (response.ok) {
 			const router = useRouter();

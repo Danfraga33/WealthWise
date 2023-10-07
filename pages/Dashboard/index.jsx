@@ -20,7 +20,7 @@ const Dashboard = withPageAuthRequired(({ pageProps }) => {
 
 	useEffect(() => {
 		const filteredData = portfolioData.filter((stockDoc) => {
-			return stockDoc.id === user.sub;
+			return stockDoc.userId === user.sub;
 		});
 		setUpdatedPortfolioData(filteredData);
 	}, [portfolioData, user]);
@@ -64,16 +64,16 @@ export const getStaticProps = async () => {
 			portfolioData: portfolioData.map((stock) => ({
 				name: stock.name,
 				email: stock.email,
-				id: stock.id,
-				ticker: stock.summary.ticker,
+				userId: stock.userId,
+				ticker: stock.stockData.ticker,
 				// id: stock._id.toString(),
-				positionSize: stock.positionSize,
-				avgPurchasePrice: stock.avgPurchasePrice,
-				valueAtPurchase: stock.valueAtPurchase,
-				lastPrice: stock.lastPrice,
-				marketValue: stock.marketValue,
-				performance: stock.performance,
-				dateOfPurchase: stock.purchaseDate,
+				positionSize: stock.stockData.positionSize,
+				avgPurchasePrice: stock.stockData.avgPurchasePrice,
+				valueAtPurchase: stock.stockData.valueAtPurchase,
+				lastPrice: stock.stockData.lastPrice,
+				marketValue: stock.stockData.marketValue,
+				performance: stock.stockData.performance,
+				dateOfPurchase: stock.stockData.purchaseDate,
 			})),
 		},
 		revalidate: 60,
