@@ -259,7 +259,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				const labelo = Object.keys(sumByDate);
 				const attempt = labelsbefore;
 				// console.log(labelsbefore);
-				// const dates = [
+				// const dates = [F
 				// 	'2023-08-25',
 				// 	'2023-09-01',
 				// 	'2023-09-08',
