@@ -12,7 +12,6 @@ import {
 	Legend,
 	PointElement,
 } from 'chart.js';
-import Link from 'next/link';
 import { CompoundContext } from '@/contextstore/DataContext';
 
 ChartJS.register(
@@ -57,8 +56,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 	const position = portfolioData[0].positionSize;
 	// Time Series Data (DATA)
 	async function getTimeSeriesData(ticker) {
-		// const API = process.env.;
-		// const url = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${ticker}&apikey=${API}`;
+		// const url = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${ticker}&apikey=${VANTAGE_API}`;
 		const url = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${ticker}&apikey=demo`;
 
 		try {
@@ -289,6 +287,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				///////////////////////////////////////////////////
 
 				const { initialAmount, targetAmount, ageDifference } = contextCtx;
+				debugger;
 				function calculateWeeklyGrowth(
 					initialAmount,
 					targetAmount,
@@ -302,7 +301,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 						return [];
 					}
 
-					// Calculate the annual interest rate compounded annually
+					// Calculate the annual interest rate ed annually
 					const expectedTimeFrameInWeeks = expectedTimeFrameInYears * 52; // Convert years to weeks
 					const annualInterestRate =
 						((targetAmount / initialAmount) ** (1 / expectedTimeFrameInYears) -
@@ -310,6 +309,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 						100;
 
 					// Calculate weekly growth
+
 					const weeklyInterestRate = annualInterestRate / 52;
 					const growthData = [initialAmount];
 					let currentAmount = initialAmount;
@@ -325,6 +325,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 
 					return growthData;
 				}
+				console.log(initialAmount, targetAmount, ageDifference);
 
 				const growthData = calculateWeeklyGrowth(
 					initialAmount,
@@ -346,7 +347,6 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				///////////////////////////////////////////////////////
 
 				const numberOfYearsToAdd = ageDifference;
-				// console.log(contextCtx);
 				// Function to increase a date by one week (7 days)
 				function increaseDateByOneWeek(dateString) {
 					const date = new Date(dateString);

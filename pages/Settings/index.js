@@ -1,7 +1,5 @@
 import React, { Fragment, useState, useRef, useContext } from 'react';
-import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0/client';
-
 import { FaFacebook } from 'react-icons/fa';
 import {
 	AiFillTwitterCircle,
@@ -17,6 +15,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { CompoundContext } from '@/contextstore/DataContext';
 import { Toaster, toast } from 'sonner';
+import Link from 'next/link';
 
 const settings = () => {
 	const context = useContext(CompoundContext);
@@ -40,17 +39,18 @@ const settings = () => {
 		const expectedTimeFrame = parseFloat(
 			financiallyFreeAgeRef.current.value - currentAgeRef.current.value
 		);
-
 		setInitialAmount(newInitialAmount);
 		setTargetAmount(newTargetAmount);
 		setAgeDifference(expectedTimeFrame);
+
+		console.log(initialAmount);
 	}
-	const { user, error, isLoading } = useUser();
+	const { user, error, isLoading, signOut } = useUser();
 
 	if (isLoading) return <div>Loading...</div>;
 	if (error) return <div>{error.message}</div>;
 	//////////////////////////////////////////////////////////////////
-	console.log(user);
+
 	return (
 		<SideBar>
 			<Head></Head>
@@ -62,7 +62,7 @@ const settings = () => {
 					<h2 className="text-3xl">Settings</h2>
 				</div>
 				<div className="p-4">
-					<div className=" grid grid-cols-2 w-full border p-4 rounded-lg bg-white overflow-y-auto ">
+					<div className=" grid grid-cols-2 w-full border p-4 rounded-lg bg-white overflow-y-auto">
 						<div className="items-center p-5">
 							<div className="w-full">
 								<div className="pb-2">
@@ -93,10 +93,9 @@ const settings = () => {
 											<input
 												id="initial"
 												type="number"
-												placeholder="Starting Amount"
+												placeholder="Insert Starting Amount"
 												className=" max-w-md border p-1 outline-none rounded-md"
 												ref={initialAmountRef}
-												defaultValue="20000"
 											/>
 										</div>
 									</div>
@@ -108,10 +107,9 @@ const settings = () => {
 										<input
 											id="targetAmount"
 											type="number"
-											placeholder="Target Amount"
+											placeholder="Insert Target Amount"
 											className=" border p-1 outline-none rounded-md"
 											ref={targetInputRef}
-											defaultValue="100000"
 										/>
 									</div>
 									<Link href="/questionnaire">
@@ -122,16 +120,15 @@ const settings = () => {
 								</div>
 								<div className="flex mb-2">
 									<label htmlFor="expectedReturn" className="mr-1">
-										Current Age:
+										Age @ Portfolio Start:
 									</label>
 									<div>
 										<input
 											id="expectedReturn"
 											type="number"
-											placeholder="35"
+											placeholder="'First Invested!' Age"
 											className="text-left md:text-center border p-1 outline-none rounded-md"
 											ref={currentAgeRef}
-											defaultValue="35"
 										/>
 									</div>
 								</div>
@@ -143,10 +140,9 @@ const settings = () => {
 										<input
 											id="expectedReturn"
 											type="number"
-											placeholder="65"
+											placeholder="Financially Free Age"
 											className="text-left md:text-center border p-1 outline-none rounded-md"
 											ref={financiallyFreeAgeRef}
-											defaultValue="65"
 										/>
 									</div>
 								</div>
@@ -168,13 +164,13 @@ const settings = () => {
 									<VscFeedback className="ml-1 hidden md:block" />
 									<p className="text-sm md:text-md">Give Feedback</p>
 								</button>
-								<button
+								<Link
+									href="/api/auth/logout"
 									className="flex justify-center items-center md:pt-1 md:pb-1 md:pr-2 w-full p-4 pr-6 border border-gray-700 rounded-lg hover:bg-white gap-2 "
-									onClick={() => signOut()}
 								>
 									<GoSignOut className="ml-1 hidden md:block" />
 									<p className="text-sm md:text-md">Sign Out</p>
-								</button>
+								</Link>
 							</div>
 							<div className="mt-5">
 								<ul className="flex gap-2">

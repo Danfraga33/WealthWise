@@ -13,7 +13,6 @@ const Header = () => {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const router = useRouter();
-	console.log(user);
 
 	async function handleSignOut() {
 		await signOut({ callbackUrl: '/' });

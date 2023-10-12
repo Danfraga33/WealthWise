@@ -66,7 +66,6 @@ export const getStaticProps = async () => {
 				email: stock.email,
 				userId: stock.userId,
 				ticker: stock.stockData.ticker,
-				// id: stock._id.toString(),
 				positionSize: stock.stockData.positionSize,
 				avgPurchasePrice: stock.stockData.avgPurchasePrice,
 				valueAtPurchase: stock.stockData.valueAtPurchase,
