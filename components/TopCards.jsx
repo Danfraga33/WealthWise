@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 
 const TopCards = ({ portfolioData }) => {
-	console.log(portfolioData);
-
 	if (!portfolioData) {
 		return <div>Loading...</div>;
 	}

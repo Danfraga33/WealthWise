@@ -7,8 +7,7 @@ import Logo from './Logo';
 
 const NavbarCopy = () => {
 	const { user } = useUser();
-	// console.log('USER:', user);
-	// console.log(process.env);
+
 	return (
 		<div>
 			<nav className="bg-white p-2">

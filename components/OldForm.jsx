@@ -55,8 +55,6 @@ const Form = (props) => {
 			marketValue: enteredMarketValue,
 			performance: performance,
 		};
-
-		// console.log(stock);
 	}
 
 	const [open, setOpen] = React.useState(false);

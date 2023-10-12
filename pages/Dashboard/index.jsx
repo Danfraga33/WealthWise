@@ -10,7 +10,6 @@ import Stock from '@/models/stockModel';
 import connectDB from '@/components/db';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import stockModel from '@/models/stockModel';
 
 const Dashboard = withPageAuthRequired(({ pageProps }) => {
 	const [updatedPortfolioData, setUpdatedPortfolioData] = useState();
@@ -24,8 +23,7 @@ const Dashboard = withPageAuthRequired(({ pageProps }) => {
 		});
 		setUpdatedPortfolioData(filteredData);
 	}, [portfolioData, user]);
-	console.log(portfolioData);
-	console.log(updatedPortfolioData);
+
 	return (
 		<Fragment>
 			<Head>
@@ -57,7 +55,6 @@ const Dashboard = withPageAuthRequired(({ pageProps }) => {
 export const getStaticProps = async () => {
 	connectDB();
 	const portfolioData = await Stock.find().lean();
-	//console.log(portfolioData);
 
 	return {
 		props: {

@@ -26,8 +26,10 @@ ChartJS.register(
 );
 
 const LineChart = ({ portfolioData, contextCtx }) => {
-	if (!portfolioData || portfolioData.length === 0) {
+	if (!portfolioData) {
 		return <div>Loading...</div>;
+	} else if (portfolioData.length === 0) {
+		return <div>Please add a stock</div>;
 	}
 	const [timeSeriesData, setTimeSeriesData] = useState([]);
 	const [allTimeSeriesData, setAllTimeSeriesData] = useState([]);
