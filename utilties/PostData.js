@@ -12,11 +12,10 @@ async function PostData(stock) {
 		});
 
 		if (response.ok) {
-			const router = useRouter();
 			const data = await response.json();
-			// router.push('/Portfolio');
+			window.location.reload();
+
 			return data;
-			// window.location.reload();
 			// setFormData(initialFormData);
 			// Task added successfully, you can redirect or perform other actions.
 		} else {

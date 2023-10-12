@@ -197,7 +197,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				const weeklyPricedDates = allFridayDates.map((date) => {
 					return extractFromPointToEnd(weeklyClosePrices, date);
 				});
-				// console.log(weeklyPricedDates);
+
 				const weeklyPricedDatesWithClose = weeklyPricedDates.map((dateObj) => {
 					const result = {};
 					for (const date in dateObj) {
@@ -205,7 +205,6 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 					}
 					return result;
 				});
-				// console.log(weeklyPricedDatesWithClose);
 
 				const updatedWeeklyPricedDatesWithClose = portfolioData.map(
 					(stock, index) => {
@@ -217,7 +216,6 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 						};
 					}
 				);
-				// console.log(updatedWeeklyPricedDatesWithClose);
 
 				// // Example usage:
 				const multipliedData = updatedWeeklyPricedDatesWithClose.map((item) => {
@@ -231,7 +229,6 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 					}
 					return multipliedItem;
 				});
-				// console.log(multipliedData);
 
 				function calculateSum(data) {
 					const sumByDate = {};
@@ -252,11 +249,11 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				}
 
 				const sumByDate = calculateSum(multipliedData);
-				// console.log(sumByDate);
+
 				const chartValues = Object.values(sumByDate);
 				const labelo = Object.keys(sumByDate);
 				const attempt = labelsbefore;
-				// console.log(labelsbefore);
+
 				// const dates = [F
 				// 	'2023-08-25',
 				// 	'2023-09-01',
@@ -287,7 +284,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				///////////////////////////////////////////////////
 
 				const { initialAmount, targetAmount, ageDifference } = contextCtx;
-				debugger;
+
 				function calculateWeeklyGrowth(
 					initialAmount,
 					targetAmount,
@@ -325,7 +322,6 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 
 					return growthData;
 				}
-				console.log(initialAmount, targetAmount, ageDifference);
 
 				const growthData = calculateWeeklyGrowth(
 					initialAmount,
@@ -361,7 +357,6 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 					attempt.push(newDate);
 				}
 
-				// console.log(attempt);
 				/////////////////////////
 				setDates(dates);
 				setLabels(labels);

@@ -33,7 +33,6 @@ export async function getStaticProps(context) {
 	connectDB();
 	const id = context.params.id;
 	const stock = await Stock.findById(id).lean();
-	console.log(stock);
 
 	const props = {
 		stockName: stock.stockData.stockName,
@@ -51,7 +50,6 @@ export async function getStaticProps(context) {
 }
 
 const StockDetails = ({ pageProps }) => {
-	// console.log(pageProps);
 	return (
 		<SideBar>
 			<Header />
