@@ -18,7 +18,7 @@ const Portfolio = ({ pageProps }) => {
 	if (!portoData) {
 		return <div>Loading...</div>;
 	}
-	// console.log(portoData);
+
 
 	// DELETE
 	async function deleteStock(id) {

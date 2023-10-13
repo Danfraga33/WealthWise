@@ -27,12 +27,11 @@ const Form = () => {
 	const [chosenStock, setChosenStock] = useState(null);
 	const { user } = useUser();
 
-	// console.log('USER FORM:', user);
+
 
 	useEffect(() => {
 		//GETS ENTIRE STOCK MARKET DATA
 
-		// console.log(process.env.NEXT_PUBLIC_POLY_API_KEY);
 		const fetchAlphaData = async () => {
 			const url = `https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/2023-09-12?adjusted=true&apiKey=${process.env.NEXT_PUBLIC_POLY_API_KEY}`;
 
@@ -55,13 +54,12 @@ const Form = () => {
 		fetchAlphaData();
 	}, []);
 
-	// console.log(entireStockMarket);
 
 	let targetObject = null;
 	useEffect(() => {
 		if (entireStockMarket) {
 			const results = entireStockMarket.results;
-			// console.log(results);
+	
 			const chosenStock = (targetObject = results.find(
 				(item) => item.T === ticker
 			));
@@ -107,7 +105,7 @@ const Form = () => {
 	function handleCheckBoxChange(e) {
 		setCurrentPurchase(e.target.checked);
 	}
-	// console.log(user.sub);
+
 	//Making Form
 	async function submitHandler(event) {
 		event.preventDefault();
@@ -142,8 +140,6 @@ const Form = () => {
 			},
 		};
 
-		// console.log(typeof enteredDOP);
-		console.log('stock:', stock);
 
 		//HTTP REQUESTS
 		const response = await PostData(stock);

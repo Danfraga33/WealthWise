@@ -11,11 +11,7 @@ function CompoundContextProvider(props) {
 	const [targetAmount, setTargetAmount] = useState(null);
 	const [ageDifference, setAgeDifference] = useState(null);
 
-	// console.log({
-	// 	initialAmount,
-	// 	targetAmount,
-	// 	ageDifference,
-	// });
+
 
 	const context = {
 		initialAmount,

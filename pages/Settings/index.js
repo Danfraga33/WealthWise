@@ -43,7 +43,6 @@ const settings = () => {
 		setTargetAmount(newTargetAmount);
 		setAgeDifference(expectedTimeFrame);
 
-		console.log(initialAmount);
 	}
 	const { user, error, isLoading, signOut } = useUser();
 

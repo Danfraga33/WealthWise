@@ -13,7 +13,6 @@ export default function GetData({ onDataFetched }) {
 			});
 			if (response.ok) {
 				const fetchedData = await response.json();
-				// console.log(fetchedData);
 				setData(fetchedData);
 				onDataFetched(fetchedData);
 			}

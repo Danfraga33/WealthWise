@@ -4,6 +4,8 @@ import { AiOutlineStock } from 'react-icons/ai';
 const Holdings = ({ portfolioData }) => {
 	if (!portfolioData) {
 		return <div>Loading...</div>;
+	} else if (portfolioData.length === 0) {
+		return <div>Please add a stock</div>;
 	}
 	return (
 		<div className="w-full col-span-1 relative p-4 border rounded-lg bg-white overflow-scroll ">

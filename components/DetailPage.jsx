@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function DetailPage({ data }) {
-	// console.log(data);
+
 
 	// <h1>HELLO</h1>
 	return (
