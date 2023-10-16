@@ -11,6 +11,56 @@ import connectDB from '@/components/db';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
+async function fetchStockData() {
+	const response = await fetch('http://localhost:3000/api/getStocks'); // Use the correct URL
+	const json = await response.json();
+	return json;
+}
+
+// 	return json.map((stock) => ({
+// 		name: stock.name,
+// 		email: stock.email,
+// 		userId: stock.userId,
+// 		ticker: stock.stockData.ticker,
+// 		positionSize: stock.stockData.positionSize,
+// 		avgPurchasePrice: stock.stockData.avgPurchasePrice,
+// 		valueAtPurchase: stock.stockData.valueAtPurchase,
+// 		lastPrice: stock.stockData.lastPrice,
+// 		marketValue: stock.stockData.marketValue,
+// 		performance: stock.stockData.performance,
+// 		dateOfPurchase: stock.stockData.purchaseDate,
+// 	}));
+// }
+
+export async function getStaticProps() {
+	connectDB();
+	const portfolioData = await Stock.find().lean();
+	const stockData = await fetchStockData();
+
+	// const portfolioData = await fetchStockData();
+	console.log(stockData);
+	// console.log(portfolioData);
+
+	return {
+		props: {
+			portfolioData: portfolioData.map((stock) => ({
+				name: stock.name,
+				email: stock.email,
+				userId: stock.userId,
+				ticker: stock.stockData.ticker,
+				positionSize: stock.stockData.positionSize,
+				avgPurchasePrice: stock.stockData.avgPurchasePrice,
+				valueAtPurchase: stock.stockData.valueAtPurchase,
+				lastPrice: stock.stockData.lastPrice,
+				marketValue: stock.stockData.marketValue,
+				performance: stock.stockData.performance,
+				dateOfPurchase: stock.stockData.purchaseDate,
+			})),
+		},
+		revalidate: 60,
+	};
+}
+
 const Dashboard = withPageAuthRequired(({ pageProps }) => {
 	const [updatedPortfolioData, setUpdatedPortfolioData] = useState();
 	const { portfolioData } = pageProps;
@@ -18,11 +68,35 @@ const Dashboard = withPageAuthRequired(({ pageProps }) => {
 	const { user } = useUser();
 
 	useEffect(() => {
-		const filteredData = portfolioData.filter((stockDoc) => {
-			return stockDoc.userId === user.sub;
-		});
-		setUpdatedPortfolioData(filteredData);
-	}, [portfolioData, user]);
+		(async () => {
+			const response = await fetch('/api/getStocks');
+			const json = await response.json();
+
+			// console.log(json);
+			setUpdatedPortfolioData(
+				json.map((stock) => ({
+					name: stock.name,
+					email: stock.email,
+					userId: stock.userId,
+					ticker: stock.stockData.ticker,
+					positionSize: stock.stockData.positionSize,
+					avgPurchasePrice: stock.stockData.avgPurchasePrice,
+					valueAtPurchase: stock.stockData.valueAtPurchase,
+					lastPrice: stock.stockData.lastPrice,
+					marketValue: stock.stockData.marketValue,
+					performance: stock.stockData.performance,
+					dateOfPurchase: stock.stockData.purchaseDate,
+				}))
+			);
+		})();
+	}, []);
+
+	// useEffect(() => {
+	// 	const filteredData = portfolioData.filter((stockDoc) => {
+	// 		return stockDoc.userId === user.sub;
+	// 	});
+	// 	setUpdatedPortfolioData(filteredData);
+	// }, [portfolioData, user]);
 
 	return (
 		<Fragment>
@@ -52,28 +126,5 @@ const Dashboard = withPageAuthRequired(({ pageProps }) => {
 });
 
 ////////// ENTRY POINT
-export const getStaticProps = async () => {
-	connectDB();
-	const portfolioData = await Stock.find().lean();
-
-	return {
-		props: {
-			portfolioData: portfolioData.map((stock) => ({
-				name: stock.name,
-				email: stock.email,
-				userId: stock.userId,
-				ticker: stock.stockData.ticker,
-				positionSize: stock.stockData.positionSize,
-				avgPurchasePrice: stock.stockData.avgPurchasePrice,
-				valueAtPurchase: stock.stockData.valueAtPurchase,
-				lastPrice: stock.stockData.lastPrice,
-				marketValue: stock.stockData.marketValue,
-				performance: stock.stockData.performance,
-				dateOfPurchase: stock.stockData.purchaseDate,
-			})),
-		},
-		revalidate: 60,
-	};
-};
 
 export default Dashboard;

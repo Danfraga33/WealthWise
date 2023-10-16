@@ -19,7 +19,6 @@ const Portfolio = ({ pageProps }) => {
 		return <div>Loading...</div>;
 	}
 
-
 	// DELETE
 	async function deleteStock(id) {
 		try {

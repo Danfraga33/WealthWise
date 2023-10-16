@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Form from '@/components/OldForm';
 import Head from 'next/head';
 import connectDB from './db';
 

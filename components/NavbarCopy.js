@@ -38,6 +38,7 @@ const NavbarCopy = () => {
 												height={45}
 												width={45}
 												className="rounded-lg"
+												unoptimized
 											/>
 										</div>
 									</>

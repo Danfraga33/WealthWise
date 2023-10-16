@@ -27,8 +27,6 @@ const Form = () => {
 	const [chosenStock, setChosenStock] = useState(null);
 	const { user } = useUser();
 
-
-
 	useEffect(() => {
 		//GETS ENTIRE STOCK MARKET DATA
 
@@ -54,12 +52,11 @@ const Form = () => {
 		fetchAlphaData();
 	}, []);
 
-
 	let targetObject = null;
 	useEffect(() => {
 		if (entireStockMarket) {
 			const results = entireStockMarket.results;
-	
+
 			const chosenStock = (targetObject = results.find(
 				(item) => item.T === ticker
 			));
@@ -139,7 +136,6 @@ const Form = () => {
 				performance: Number(performance),
 			},
 		};
-
 
 		//HTTP REQUESTS
 		const response = await PostData(stock);
