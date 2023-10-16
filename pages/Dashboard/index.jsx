@@ -12,7 +12,7 @@ import { withPageAuthRequired } from '@auth0/nextjs-auth0/client';
 import { useUser } from '@auth0/nextjs-auth0/client';
 
 async function fetchStockData() {
-	const response = await fetch('http://localhost:3000/api/getStocks'); // Use the correct URL
+	const response = await fetch('http://localhost:3000/api/getStocks');
 	const json = await response.json();
 	return json;
 }
