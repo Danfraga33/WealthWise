@@ -14,33 +14,61 @@ function classNames(...classes) {
 }
 
 const Portfolio = ({ pageProps }) => {
+	const [pData, setPData] = useState();
 	const portoData = pageProps.portfolioData;
 	if (!portoData) {
 		return <div>Loading...</div>;
 	}
 
-	// DELETE
-	async function deleteStock(id) {
-		try {
-			const response = await fetch(`/api/deleteStock?id=${id}`, {
-				method: 'DELETE',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			});
-			if (response.ok) {
-				const router = useRouter();
-				router.push('/Dashbaord');
-			} else {
-				console.log('Failure to delete');
-			}
-			// Item deleted successfully, you can handle any UI updates here
-			// For example, you can remove the item from the UI state or trigger a re-fetch of data.
-		} catch (error) {
-			console.error('Error deleting stock:', error);
-			// Handle any network or other errors.
-		}
+	useEffect(() => {
+		(async () => {
+			const response = await fetch('/api/getStocks');
+			const json = await response.json();
+
+			setPData(
+				json.map((stock) => ({
+					name: stock.name,
+					email: stock.email,
+					userId: stock.userId,
+					ticker: stock.stockData.ticker,
+					id: stock._id.toString(),
+					positionSize: stock.stockData.positionSize,
+					avgPurchasePrice: stock.stockData.avgPurchasePrice,
+					valueAtPurchase: stock.stockData.valueAtPurchase,
+					lastPrice: stock.stockData.lastPrice,
+					marketValue: stock.stockData.marketValue,
+					performance: stock.stockData.performance,
+					dateOfPurchase: stock.stockData.purchaseDate,
+				}))
+			);
+		})();
+	}, []);
+	if (!pData) {
+		return <div>Loading...</div>;
 	}
+
+	// DELETE
+	// async function deleteStock(id) {
+	// 	try {
+	// 		const response = await fetch(`/api/deleteStock?id=${id}`, {
+	// 			method: 'DELETE',
+	// 			headers: {
+	// 				'Content-Type': 'application/json',
+	// 			},
+	// 		});
+	// 		if (response.ok) {
+	// 			const router = useRouter();
+	// 			router.push('/Dashbaord');
+	// 		} else {
+	// 			console.log('Failure to delete');
+	// 		}
+	// 		// Item deleted successfully, you can handle any UI updates here
+	// 		// For example, you can remove the item from the UI state or trigger a re-fetch of data.
+	// 	} catch (error) {
+	// 		console.error('Error deleting stock:', error);
+	// 		// Handle any network or other errors.
+	// 	}
+	// }
 	return (
 		<>
 			<SideBar>
@@ -69,44 +97,45 @@ const Portfolio = ({ pageProps }) => {
 								</span>
 							</div>
 							<ul>
-								{portoData.map((stock, id) => (
-									<Link href={`/Portfolio/${stock.id}`} key={stock.id}>
-										<li
-											key={id}
-											className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-8 grid-cols-3 items-center justify-between cursor-pointer"
-										>
-											<div className="md:flex hidden">
-												<div className="bg-green-200 p-2 rounded-lg">
-													<TiTickOutline />
+								{pData.length > 0 &&
+									pData.map((stock, id) => (
+										<Link href={`/Portfolio/${stock.id}`} key={stock.id}>
+											<li
+												key={id}
+												className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-8 grid-cols-3 items-center justify-between cursor-pointer"
+											>
+												<div className="md:flex hidden">
+													<div className="bg-green-200 p-2 rounded-lg">
+														<TiTickOutline />
+													</div>
+													<div className="pl-4">
+														<p className="text-gray-800 font-bold"></p>
+													</div>
 												</div>
-												<div className="pl-4">
-													<p className="text-gray-800 font-bold"></p>
+												<div className="flex text-sm md:text-md">
+													{stock.ticker} {/* </div> */}
 												</div>
-											</div>
-											<div className="flex text-sm md:text-md">
-												{stock.ticker} {/* </div> */}
-											</div>
 
-											<p className="hidden md:flex text-sm md:text-md">
-												{stock.positionSize.toFixed(2)}
-											</p>
-											<p className="hidden md:flex text-sm md:text-md">
-												{stock.avgPurchasePrice.toFixed(2)}
-											</p>
-											<p className="hidden md:flex text-sm md:text-md">
-												{stock.valueAtPurchase.toFixed(2)}
-											</p>
-											<p className="flex text-sm md:text-md">
-												{stock.lastPrice.toFixed(2)}
-											</p>
-											<p className="hidden md:flex text-sm md:text-md">
-												{stock.marketValue.toFixed(2)}
-											</p>
+												<p className="hidden md:flex text-sm md:text-md">
+													{stock.positionSize.toFixed(2)}
+												</p>
+												<p className="hidden md:flex text-sm md:text-md">
+													{stock.avgPurchasePrice.toFixed(2)}
+												</p>
+												<p className="hidden md:flex text-sm md:text-md">
+													{stock.valueAtPurchase.toFixed(2)}
+												</p>
+												<p className="flex text-sm md:text-md">
+													{stock.lastPrice.toFixed(2)}
+												</p>
+												<p className="hidden md:flex text-sm md:text-md">
+													{stock.marketValue.toFixed(2)}
+												</p>
 
-											<div className="flex md:justify-between  items-center text-sm md:text-md">
-												<p>{stock.performance.toFixed(2) + '%'}</p>
+												<div className="flex md:justify-between  items-center text-sm md:text-md">
+													<p>{stock.performance.toFixed(2) + '%'}</p>
 
-												{/* <Menu
+													{/* <Menu
 													as="div"
 													className="relative inline-block text-left"
 												>
@@ -138,10 +167,10 @@ const Portfolio = ({ pageProps }) => {
 														</Menu.Items>
 													</Transition>
 												</Menu> */}
-											</div>
-										</li>
-									</Link>
-								))}
+												</div>
+											</li>
+										</Link>
+									))}
 							</ul>
 						</div>
 					</div>
