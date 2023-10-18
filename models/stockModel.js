@@ -9,7 +9,7 @@ const stockSchema = new mongoose.Schema({
 	stockData: {
 		ticker: String,
 		stockName: String,
-		purchaseDate: String,
+		purchaseDate: String, 
 		positionSize: Number,
 		avgPurchasePrice: Number,
 		valueAtPurchase: Number,
