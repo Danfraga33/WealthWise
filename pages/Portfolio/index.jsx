@@ -12,7 +12,7 @@ import { Menu, Transition } from '@headlessui/react';
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
 }
-
+ 
 const Portfolio = ({ pageProps }) => {
 	const [pData, setPData] = useState();
 	const portoData = pageProps.portfolioData;

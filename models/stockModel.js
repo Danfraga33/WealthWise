@@ -1,7 +1,7 @@
 import connectDB from '@/components/db';
 import mongoose from 'mongoose';
 
-// connectDB();
+// connectDB(); 
 const stockSchema = new mongoose.Schema({
 	name: String,
 	email: String,
@@ -9,7 +9,7 @@ const stockSchema = new mongoose.Schema({
 	stockData: {
 		ticker: String,
 		stockName: String,
-		purchaseDate: String,
+		purchaseDate: String, 
 		positionSize: Number,
 		avgPurchasePrice: Number,
 		valueAtPurchase: Number,
