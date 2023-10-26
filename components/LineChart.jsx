@@ -199,7 +199,6 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				const weeklyPricedDates = allFridayDates.map((date) => {
 					return extractFromPointToEnd(weeklyClosePrices, date);
 				});
-				console.log(weeklyPricedDates);
 
 				const weeklyPricedDatesWithClose = weeklyPricedDates.map((dateObj) => {
 					const result = {};
@@ -220,7 +219,6 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 						};
 					}
 				);
-				console.log(updatedWeeklyPricedDatesWithClose);
 
 				// // Example usage:
 				const multipliedData = updatedWeeklyPricedDatesWithClose.map((item) => {
@@ -261,7 +259,6 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				const sumByDate = calculateSum(multipliedData);
 				const chartValues = Object.values(sumByDate).reverse();
 
-				console.log({ chartValues });
 				const attempt = labelsbefore;
 
 				// const dates = [F

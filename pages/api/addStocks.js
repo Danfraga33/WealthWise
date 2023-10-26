@@ -21,8 +21,6 @@ export default async function handler(req, res) {
 				performance,
 			} = stockData;
 
-			console.log('REQUEST_DATA:', req.body);
-
 			const update = new Stock({
 				name,
 				email,
@@ -42,7 +40,6 @@ export default async function handler(req, res) {
 			console.log('Final Data Inputted:', update);
 			// const result = await Stock.save();
 			const result = await update.save();
-			console.log('RESULT:', result);
 
 			// const filter = { userId: user.id };
 			// const options = { upsert: true };
