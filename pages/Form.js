@@ -250,7 +250,7 @@ const Form = () => {
 										id="lastPrice"
 										className="ml-1 bg-gwhite rounded-lg text-center"
 										ref={lastPriceInputRef}
-										step="0.01"
+										step="any"
 									/>
 								</div>
 							</>

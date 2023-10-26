@@ -48,7 +48,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 		tickers.push(stock.ticker);
 	});
 
-	const ticker = portfolioData[0].ticker; //ONLY SELECTING THE FIRST
+	const ticker = portfolioData[1].ticker; //ONLY SELECTING THE FIRST
 
 	const positions = [];
 	portfolioData.map((stock) => {
@@ -199,6 +199,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				const weeklyPricedDates = allFridayDates.map((date) => {
 					return extractFromPointToEnd(weeklyClosePrices, date);
 				});
+				console.log(weeklyPricedDates);
 
 				const weeklyPricedDatesWithClose = weeklyPricedDates.map((dateObj) => {
 					const result = {};
@@ -208,6 +209,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 					return result;
 				});
 
+				//Extracting the closed price for each date for to multiply the holdings
 				const updatedWeeklyPricedDatesWithClose = portfolioData.map(
 					(stock, index) => {
 						return {
@@ -218,6 +220,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 						};
 					}
 				);
+				console.log(updatedWeeklyPricedDatesWithClose);
 
 				// // Example usage:
 				const multipliedData = updatedWeeklyPricedDatesWithClose.map((item) => {
@@ -231,6 +234,10 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 					}
 					return multipliedItem;
 				});
+
+				//all looking good here. value it different for each date.
+				// now to add and show on linechart
+				// Problem: Dates for multipliedData is not align with labels. Solution: match dates.
 
 				function calculateSum(data) {
 					const sumByDate = {};
@@ -250,10 +257,11 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 					return sumByDate;
 				}
 
+				//NEEDS TO USE LABELSBEFORE DATES WHEN CALCULATING THE sumByDate
 				const sumByDate = calculateSum(multipliedData);
+				const chartValues = Object.values(sumByDate).reverse();
 
-				const chartValues = Object.values(sumByDate);
-				const labelo = Object.keys(sumByDate);
+				console.log({ chartValues });
 				const attempt = labelsbefore;
 
 				// const dates = [F
@@ -282,7 +290,7 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 					return sma;
 				}
 
-				const sma = calculateSMA(chartValues, 104);
+				const sma = calculateSMA(chartValues, 20);
 				///////////////////////////////////////////////////
 
 				const { initialAmount, targetAmount, ageDifference } = contextCtx;
