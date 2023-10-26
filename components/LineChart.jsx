@@ -258,7 +258,6 @@ const LineChart = ({ portfolioData, contextCtx }) => {
 				//NEEDS TO USE LABELSBEFORE DATES WHEN CALCULATING THE sumByDate
 				const sumByDate = calculateSum(multipliedData);
 				const chartValues = Object.values(sumByDate).reverse();
-
 				const attempt = labelsbefore;
 
 				// const dates = [F
