@@ -18,8 +18,8 @@ const Hero = () => {
 				<div className="flex flex-col justify-center w-full items-center px-8">
 					<Image
 						src="/WealthWave.png"
-						height={250}
-						width="auto"
+						height="250"
+						width="200"
 						alt="Logo"
 						className="z-10"
 					/>
