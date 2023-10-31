@@ -38,8 +38,8 @@ export async function getStaticProps() {
 	const stockData = await fetchStockData();
 
 	// const portfolioData = await fetchStockData();
-	console.log(stockData);
-	// console.log(portfolioData);
+	// console.log(stockData);
+	console.log(portfolioData);
 
 	return {
 		props: {
@@ -57,7 +57,7 @@ export async function getStaticProps() {
 				dateOfPurchase: stock.stockData.purchaseDate,
 			})),
 		},
-		revalidate: 60,
+		revalidate: 259200,
 	};
 }
 

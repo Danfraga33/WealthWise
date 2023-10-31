@@ -8,7 +8,7 @@ const Holdings = ({ portfolioData }) => {
 		return <div>Please add a stock</div>;
 	}
 
-	console.log(portfolioData);
+	
 	return (
 		<div className="w-full col-span-1 relative p-4 border rounded-lg bg-white overflow-scroll ">
 			<h1>Current Holdings</h1>

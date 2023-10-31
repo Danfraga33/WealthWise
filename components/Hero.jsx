@@ -19,7 +19,7 @@ const Hero = () => {
 					<Image
 						src="/WealthWave.png"
 						height={250}
-						width={275}
+						width="auto"
 						alt="Logo"
 						className="z-10"
 					/>
