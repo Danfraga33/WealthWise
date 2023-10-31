@@ -5,8 +5,6 @@ export default async function handler(req, res) {
 		connectDB();
 		try {
 			// const Stock = new mongoose.model('Stock', stockSchema);
-			// console.log('Connected to MongoDB');
-			//Preparing Data
 			const { name, email, userId, stockData } = req.body;
 
 			const {

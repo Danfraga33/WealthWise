@@ -8,7 +8,6 @@ async function getHandler(req, res) {
 	if (req.method === 'GET') {
 		try {
 			connectDB();
-			console.log('Connected to MongoDB');
 			const stocks = await Stock.find({ userId: user.sub });
 			res.status(200).json(stocks);
 		} catch (error) {
